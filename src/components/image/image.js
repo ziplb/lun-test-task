@@ -3,12 +3,12 @@ import cn from "classnames";
 
 import "./image.css";
 
-const Image = ({ media, isAdaptable }) => (
+const Image = ({ image, isAdaptable }) => (
   <img
     className={cn("Image", { "Image--adaptable": isAdaptable })}
-    src={media.normal}
-    srcSet={`${media.double || media.normal} 2x`}
-    alt={media.title}
+    src={image.normal}
+    srcSet={`${image.double || image.normal} 2x`}
+    alt={image.title}
   />
 );
 
