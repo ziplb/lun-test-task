@@ -1,0 +1,10 @@
+.Image {
+  display: inline-block;
+  width: 100%;
+  vertical-align: top;
+}
+
+.Image--adaptable {
+  height: 100%;
+  object-fit: cover;
+}
