@@ -1,4 +1,8 @@
 .Input {
+  position: relative;
+}
+
+.Input-el {
   width: 100%;
   height: 40px;
   line-height: 38px;
@@ -14,15 +18,27 @@
   transition: border 0.3s ease-in-out;
 }
 
-Input::placeholder {
+.Input-el::placeholder {
   color: #bbb;
 }
 
-.Input--error {
+.Input-el--error {
   border: 1px solid #ff0000;
 }
 
-.Input--small {
+.Input-el--small {
   height: 32px;
   line-height: 30px;
+}
+
+.Input-el--withRightGap {
+  padding-right: 40px;
+}
+
+.Input-icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ddd;
 }
