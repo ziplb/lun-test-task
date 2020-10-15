@@ -1,0 +1,64 @@
+.Checkbox {
+}
+
+.Checkbox--disabled {
+  opacity: 0.7;
+}
+
+.Checkbox-wrapper {
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+}
+
+.Checkbox--disabled .Checkbox-wrapper {
+  cursor: default;
+}
+
+.Checkbox-el {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+.Checkbox-mark {
+  position: relative;
+  flex: 0 0 auto;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease-out;
+}
+
+.Checkbox-el:checked + .Checkbox-mark {
+  background-color: #ff9800;
+}
+
+.Checkbox-markIcon {
+  line-height: 1;
+  font-size: 20px;
+  opacity: 0;
+  color: #fff;
+  transition: opacity 0.3s ease-out;
+}
+
+.Checkbox-el:checked + .Checkbox-mark .Checkbox-markIcon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.Checkbox-label {
+  line-height: 20px;
+}
