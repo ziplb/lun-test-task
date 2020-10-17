@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import PersonalQuestionnaireStep from "../personal-questionnaire-step/personal-questionnaire-step";
 import SocialsQuestionnaireStep from "../socials-quesitonnaire-step/socials-quesitonnaire-step";
+import FavoriteAnimalQuesitonnaireStep from "../favorite-animal-questionnaire-step/favorite-animal-questionnaire-step";
 
 import { stepSlugInOrderList } from "../../data";
 import {
@@ -37,7 +38,7 @@ const QuestionnaireStepsScene = () => (
 
     <Route
       path={getFavoriteAnimalQuestionnaireStepLink()}
-      component={() => "FavoriteAnimalStep"}
+      component={FavoriteAnimalQuesitonnaireStep}
       exact
     />
 

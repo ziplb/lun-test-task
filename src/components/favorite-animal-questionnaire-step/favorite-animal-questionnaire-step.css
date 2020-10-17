@@ -1,0 +1,18 @@
+.FavoriteAnimalQuesitonnaireStep {
+}
+
+.FavoriteAnimalQuesitonnaireStep-grid {
+  display: flex;
+}
+
+.FavoriteAnimalQuesitonnaireStep-item {
+  margin-right: 16px;
+}
+
+.FavoriteAnimalQuesitonnaireStep-item:last-child {
+  margin-bottom: 0;
+}
+
+.FavoriteAnimalQuesitonnaireStep-error {
+  color: #ff0000;
+}

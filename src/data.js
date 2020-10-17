@@ -29,7 +29,7 @@ const stepInOrderList = [
 
 export const stepSlugInOrderList = stepInOrderList.map(({ slug }) => slug);
 
-const animalKinds = {
+export const animalKinds = {
   cat: "cat",
   dog: "dog",
 };
@@ -55,7 +55,8 @@ export const animalList = [
     image: { title: "First cat", normal: thirdCatImage, double: thirdCatImage },
   },
   {
-    slug: "first-cat",
-    image: { title: "First cat", normal: dogImage, double: dogImage },
+    slug: "dog",
+    kind: animalKinds.dog,
+    image: { title: "Dog", normal: dogImage, double: dogImage },
   },
 ];

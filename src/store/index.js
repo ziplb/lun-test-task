@@ -6,6 +6,7 @@ import { createAction } from "./helpers";
 // Types
 const SUBMIT_PERSONAL_STEP = "SUBMIT_PERSONAL_STEP";
 const SUBMIT_SOCIALS_STEP = "SUBMIT_SOCIALS_STEP";
+const SUBMIT_FAVORITE_ANIMAL_STEP = "SUBMIT_FAVORITE_ANIMAL_STEP";
 
 // Actions
 const actions = {
@@ -14,6 +15,9 @@ const actions = {
 
   submitSocialsStep: (socials) =>
     createAction(SUBMIT_SOCIALS_STEP, { socials }),
+
+  submitFavoriteAnimalStep: (favoriteAnimalSlug) =>
+    createAction(SUBMIT_FAVORITE_ANIMAL_STEP, { favoriteAnimalSlug }),
 };
 
 // Reducer
@@ -21,6 +25,7 @@ const initialState = {
   fullName: "",
   email: "",
   socials: { facebook: "", vk: "", twitter: "", odnoklassniki: "" },
+  favoriteAnimalSlug: "",
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -35,6 +40,11 @@ const reducer = (state = initialState, { type, payload }) => {
       return { ...state, socials };
     }
 
+    case SUBMIT_FAVORITE_ANIMAL_STEP: {
+      const { favoriteAnimalSlug } = payload;
+      return { ...state, favoriteAnimalSlug };
+    }
+
     default:
       return state;
   }
@@ -42,10 +52,11 @@ const reducer = (state = initialState, { type, payload }) => {
 
 const store = createStore(reducer);
 
-const { submitPersonalStep, submitSocialsStep } = bindActionCreators(
-  actions,
-  store.dispatch
-);
+const {
+  submitPersonalStep,
+  submitSocialsStep,
+  submitFavoriteAnimalStep,
+} = bindActionCreators(actions, store.dispatch);
 
-export { submitPersonalStep, submitSocialsStep };
+export { submitPersonalStep, submitSocialsStep, submitFavoriteAnimalStep };
 export default store;
