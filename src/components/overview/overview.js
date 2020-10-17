@@ -10,7 +10,12 @@ const Overview = () => {
   const fullName = useSelector((state) => state.fullName);
   const email = useSelector((state) => state.email);
   const socials = useSelector((state) => state.socials);
-  const favoriteAnimalSlug = useSelector((state) => state.favoriteAnimalSlug);
+  const favoriteAnimal = useSelector((state) => state.favoriteAnimal);
+
+  console.log(
+    "state: ",
+    useSelector((state) => state)
+  );
 
   return (
     <div className="Overview">
@@ -20,7 +25,7 @@ const Overview = () => {
         city="Kiev"
         country="Ukraine"
         socialList={[]}
-        image={animalList.find(({ slug }) => slug === favoriteAnimalSlug).image}
+        image={favoriteAnimal.image}
       />
     </div>
   );

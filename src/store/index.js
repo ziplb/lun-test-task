@@ -16,8 +16,8 @@ const actions = {
   submitSocialsStep: (socials) =>
     createAction(SUBMIT_SOCIALS_STEP, { socials }),
 
-  submitFavoriteAnimalStep: (favoriteAnimalSlug) =>
-    createAction(SUBMIT_FAVORITE_ANIMAL_STEP, { favoriteAnimalSlug }),
+  submitFavoriteAnimalStep: (favoriteAnimal) =>
+    createAction(SUBMIT_FAVORITE_ANIMAL_STEP, { favoriteAnimal }),
 };
 
 // Reducer
@@ -25,7 +25,7 @@ const initialState = {
   fullName: "",
   email: "",
   socials: { facebook: "", vk: "", twitter: "", odnoklassniki: "" },
-  favoriteAnimalSlug: "",
+  favoriteAnimal: null,
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -41,8 +41,8 @@ const reducer = (state = initialState, { type, payload }) => {
     }
 
     case SUBMIT_FAVORITE_ANIMAL_STEP: {
-      const { favoriteAnimalSlug } = payload;
-      return { ...state, favoriteAnimalSlug };
+      const { favoriteAnimal } = payload;
+      return { ...state, favoriteAnimal };
     }
 
     default:

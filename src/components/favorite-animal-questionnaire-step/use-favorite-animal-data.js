@@ -1,46 +1,38 @@
 import { useFormik } from "formik";
 import { useSelector } from "react-redux";
-import { object, string, addMethod as addYupMethod } from "yup";
+import { object, addMethod as addYupMethod } from "yup";
 
 import { submitFavoriteAnimalStep } from "../../store";
-import { animalList, animalKinds } from "../../data";
+import { animalKinds } from "../../data";
 import { useStepNavigation } from "../../hooks";
 
-addYupMethod(string, "isCat", function (message) {
+addYupMethod(object, "isCat", function (message) {
   return this.test(
     "defined",
     message,
-    (animalSlug) =>
-      animalSlug &&
-      animalList.find(({ slug }) => slug === animalSlug).kind ===
-        animalKinds.cat
+    (favoriteAnimal) => favoriteAnimal?.kind === animalKinds.cat
   );
 });
 
 const validationSchema = object().shape({
-  favoriteAnimalSlug: string()
+  favoriteAnimal: object()
+    .nullable(true)
     .required("Выберите своего любимого котика")
     .isCat("Нужно выбрать котика"),
 });
 
-const useSocialsData = () => {
-  const favoriteAnimalSlug = useSelector((state) => state.favoriteAnimalSlug);
+const useFavoriteAnimalData = () => {
+  const favoriteAnimal = useSelector((state) => state.favoriteAnimal);
+  // eslint-disable-next-line no-empty-pattern
   const [{}, { goToNextStep }] = useStepNavigation();
 
-  const {
-    values,
-    touched,
-    errors,
-    handleChange,
-    handleSubmit,
-    setFieldValue,
-  } = useFormik({
+  const { values, touched, errors, handleSubmit, setFieldValue } = useFormik({
     initialValues: {
-      favoriteAnimalSlug,
+      favoriteAnimal,
     },
     validationSchema,
     onSubmit: (values) => {
-      submitFavoriteAnimalStep(values.favoriteAnimalSlug);
+      submitFavoriteAnimalStep(values.favoriteAnimal);
       goToNextStep();
     },
   });
@@ -48,11 +40,10 @@ const useSocialsData = () => {
   return [
     { values, touched, errors },
     {
-      onChange: handleChange,
       onSubmit: handleSubmit,
       onFieldValueSet: setFieldValue,
     },
   ];
 };
 
-export default useSocialsData;
+export default useFavoriteAnimalData;

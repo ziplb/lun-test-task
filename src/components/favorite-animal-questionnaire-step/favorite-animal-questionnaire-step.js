@@ -11,10 +11,10 @@ import "./favorite-animal-questionnaire-step.css";
 const FavoriteAnimalQuesitonnaireStep = () => {
   const [
     { values, errors, touched },
-    { onChange, onSubmit },
+    { onFieldValueSet, onSubmit },
   ] = useFavoriteAnimalData();
 
-  const error = getFormikError("favoriteAnimalSlug", errors, touched);
+  const error = getFormikError("favoriteAnimal", errors, touched);
 
   return (
     <div className="FavoriteAnimalQuesitonnaireStep">
@@ -24,14 +24,17 @@ const FavoriteAnimalQuesitonnaireStep = () => {
         isAutoWidth
       >
         <div className="FavoriteAnimalQuesitonnaireStep-grid">
-          {animalList.map(({ slug, image }) => (
-            <div key={slug} className="FavoriteAnimalQuesitonnaireStep-item">
+          {animalList.map((animal) => (
+            <div
+              key={animal.slug}
+              className="FavoriteAnimalQuesitonnaireStep-item"
+            >
               <AnimalRadio
-                name="favoriteAnimalSlug"
-                image={image}
-                value={slug}
-                checked={values.favoriteAnimalSlug === slug}
-                onChange={onChange}
+                name="favoriteAnimal"
+                image={animal.image}
+                value={animal.slug}
+                checked={values.favoriteAnimal?.slug === animal.slug}
+                onChange={() => onFieldValueSet("favoriteAnimal", animal)}
               />
             </div>
           ))}
