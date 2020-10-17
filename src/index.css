@@ -9,10 +9,10 @@
 
 @font-face {
   font-family: "Open Sans";
-  src: local("Open Sans Bold"), local("OpenSans Bold"),
-    url("./assets/fonts/OpenSans-Bold.woff2") format("woff2"),
-    url("./assets/fonts/OpenSans-Bold.woff") format("woff");
-  font-weight: 700;
+  src: local("Open Sans SemiBold"), local("OpenSans SemiBold"),
+    url("./assets/fonts/OpenSans-SemiBold.woff2") format("woff2"),
+    url("./assets/fonts/OpenSans-SemiBold.woff") format("woff");
+  font-weight: 600;
   font-style: normal;
 }
 
