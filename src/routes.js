@@ -12,11 +12,11 @@ export const getQuestionnaireLink = () => "/questionnaire";
 export const getQuestionnaireStepLink = (step) =>
   `${getQuestionnaireLink()}/${step}`;
 
-export const getQuestionnairePersonalStepLink = () =>
+export const getPersonalQuestionnaireStepLink = () =>
   getQuestionnaireStepLink(personalStep.slug);
-export const getQuestionnaireLocationStepLink = () =>
+export const getLocationQuestionnaireStepLink = () =>
   getQuestionnaireStepLink(locationStep.slug);
-export const getQuestionnaireSocialsStepLink = () =>
+export const getSocialsQuestionnaireStepLink = () =>
   getQuestionnaireStepLink(socialsStep.slug);
-export const getQuestionnaireFavoriteAnimalStepLink = () =>
+export const getFavoriteAnimalQuestionnaireStepLink = () =>
   getQuestionnaireStepLink(favoriteAnimalStep.slug);

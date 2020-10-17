@@ -4,10 +4,10 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { stepSlugInOrderList } from "../../data";
 import {
   getQuestionnaireStepLink,
-  getQuestionnairePersonalStepLink,
-  getQuestionnaireLocationStepLink,
-  getQuestionnaireSocialsStepLink,
-  getQuestionnaireFavoriteAnimalStepLink,
+  getPersonalQuestionnaireStepLink,
+  getLocationQuestionnaireStepLink,
+  getSocialsQuestionnaireStepLink,
+  getFavoriteAnimalQuestionnaireStepLink,
 } from "../../routes";
 
 const firstStepSlug = stepSlugInOrderList[0];
@@ -15,25 +15,25 @@ const firstStepSlug = stepSlugInOrderList[0];
 const QuestionnaireStepsScene = () => (
   <Switch>
     <Route
-      path={getQuestionnairePersonalStepLink()}
+      path={getPersonalQuestionnaireStepLink()}
       component={() => "PersonalStep"}
       exact
     />
 
     <Route
-      path={getQuestionnaireLocationStepLink()}
+      path={getLocationQuestionnaireStepLink()}
       component={() => "LocationStep"}
       exact
     />
 
     <Route
-      path={getQuestionnaireSocialsStepLink()}
+      path={getSocialsQuestionnaireStepLink()}
       component={() => "SocialsStep"}
       exact
     />
 
     <Route
-      path={getQuestionnaireFavoriteAnimalStepLink()}
+      path={getFavoriteAnimalQuestionnaireStepLink()}
       component={() => "FavoriteAnimalStep"}
       exact
     />
