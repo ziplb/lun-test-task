@@ -1,0 +1,10 @@
+.Form {
+}
+
+.Form-row {
+  margin-bottom: 24px;
+}
+
+.Form-row:last-child {
+  margin-bottom: 0;
+}
