@@ -1,13 +1,13 @@
 import React from "react";
 
-import StepsScene from "../steps-scene/steps-scene";
+import QuestionnaireStepsScene from "../questionnaire-steps-scene/questionnaire-steps-scene";
 
 import "./questionnaire.css";
 
 const Questionnaire = () => (
   <div className="Questionnaire">
     <div className="Questionnaire-stepsScene">
-      <StepsScene />
+      <QuestionnaireStepsScene />
     </div>
   </div>
 );

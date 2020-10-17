@@ -12,7 +12,7 @@ import {
 
 const firstStepSlug = stepSlugInOrderList[0];
 
-const StepsScene = () => (
+const QuestionnaireStepsScene = () => (
   <Switch>
     <Route
       path={getQuestionnairePersonalStepLink()}
@@ -42,4 +42,4 @@ const StepsScene = () => (
   </Switch>
 );
 
-export default StepsScene;
+export default QuestionnaireStepsScene;
