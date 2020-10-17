@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-import PersonalQuestionnaireStep from "../peronal-questionnaire-step/peronal-questionnaire-step";
+import PersonalQuestionnaireStep from "../personal-questionnaire-step/personal-questionnaire-step";
 
 import { stepSlugInOrderList } from "../../data";
 import {
