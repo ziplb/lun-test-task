@@ -12,11 +12,6 @@ const Overview = () => {
   const socials = useSelector((state) => state.socials);
   const favoriteAnimalSlug = useSelector((state) => state.favoriteAnimalSlug);
 
-  console.log(
-    "state: ",
-    useSelector((state) => state)
-  );
-
   return (
     <div className="Overview">
       <OverviewCard
