@@ -1,0 +1,37 @@
+.AnimalRadio {
+}
+
+.AnimalRadio-wrapper {
+  cursor: pointer;
+}
+
+.AnimalRadio-el {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+.AnimalRadio-image {
+  display: inline-block;
+  width: 146px;
+  height: 146px;
+  margin: 2px;
+  border-radius: 2px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.AnimalRadio-image:hover {
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+.AnimalRadio-el:checked + .AnimalRadio-image {
+  border: 2px solid #ff9800;
+  margin: 0;
+  pointer-events: none;
+}
