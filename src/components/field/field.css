@@ -1,0 +1,33 @@
+.Field {
+  position: relative;
+}
+
+.Field--error {
+}
+
+.Field-el {
+}
+
+.Field-hint {
+  position: absolute;
+  top: 50%;
+  right: -16px;
+  transform: translate(100%, -50%);
+  display: flex;
+  align-items: center;
+}
+
+.Field--error .Field-hint {
+  color: #ff0000;
+}
+
+.Field-hintSeparator {
+  flex: 0 0 auto;
+  width: 16px;
+  border-top: 1px solid currentColor;
+  margin-right: 16px;
+}
+
+.Field-hintText {
+  flex: 1 1 auto;
+}
