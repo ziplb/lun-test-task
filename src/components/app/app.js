@@ -7,8 +7,8 @@ import "./app.css";
 
 const AppScene = () => (
   <Switch>
-    <Route path={getOverviewLink()} component={() => <>Overview</>} exact />
     <Route path={getQuestionnaireLink()} component={() => <>Questionnaire</>} />
+    <Route path={getOverviewLink()} component={() => <>Overview</>} exact />
 
     <Redirect to={getQuestionnaireLink()} />
   </Switch>
