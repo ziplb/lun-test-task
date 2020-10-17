@@ -26,6 +26,7 @@ const Checkbox = ({
         disabled={isDisabled}
         value={value}
         checked={value}
+        onChange={onChange}
         {...rest}
       />
 

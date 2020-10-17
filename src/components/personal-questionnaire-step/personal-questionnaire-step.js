@@ -5,10 +5,9 @@ import Form from "../form/form";
 import Input from "../input/input";
 import Field from "../field/field";
 
+import { getFormikError } from "../../utils";
 import { personalStep } from "../../data";
 import usePersonalData from "./use-personal-data";
-
-const getError = (name, errors, touched) => touched[name] && errors[name];
 
 const PersonalQuestionnaireStep = () => {
   const [
@@ -16,8 +15,8 @@ const PersonalQuestionnaireStep = () => {
     { onChange, onSubmit },
   ] = usePersonalData();
 
-  const fullNameError = getError("fullName", errors, touched);
-  const emailError = getError("email", errors, touched);
+  const fullNameError = getFormikError("fullName", errors, touched);
+  const emailError = getFormikError("email", errors, touched);
 
   return (
     <QuestionnaireStep step={personalStep} onSubmit={onSubmit}>

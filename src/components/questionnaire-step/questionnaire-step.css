@@ -8,7 +8,7 @@
 }
 
 .QuestionnaireStep-title {
-  width: 320px;
+  width: 400px;
   margin: 0;
   margin-bottom: 32px;
   line-height: 1.2;
@@ -23,7 +23,7 @@
 }
 
 .QuestionnaireStep-content {
-  width: 320px;
+  width: 400px;
   min-height: 240px;
 }
 
@@ -34,7 +34,7 @@
 .QuestionnaireStep-navigationGroup {
   display: flex;
   justify-content: space-between;
-  width: 320px;
+  width: 400px;
 }
 
 .QuestionnaireStep-navigationItem {

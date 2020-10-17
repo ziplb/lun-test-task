@@ -1,0 +1,18 @@
+.SocialField {
+}
+
+.SocialField-row {
+  display: flex;
+}
+
+.SocialField-condition {
+  display: flex;
+  align-items: center;
+  width: 144px;
+  height: 32px;
+  margin-right: 24px;
+}
+
+.SocialField-field {
+  flex: 1 1 auto;
+}

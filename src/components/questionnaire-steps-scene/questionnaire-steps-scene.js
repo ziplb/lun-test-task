@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import PersonalQuestionnaireStep from "../personal-questionnaire-step/personal-questionnaire-step";
+import SocialsQuestionnaireStep from "../socials-quesitonnaire-step/socials-quesitonnaire-step";
 
 import { stepSlugInOrderList } from "../../data";
 import {
@@ -30,7 +31,7 @@ const QuestionnaireStepsScene = () => (
 
     <Route
       path={getSocialsQuestionnaireStepLink()}
-      component={() => "SocialsStep"}
+      component={SocialsQuestionnaireStep}
       exact
     />
 
