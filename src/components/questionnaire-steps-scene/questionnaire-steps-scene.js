@@ -1,6 +1,8 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
+import PersonalQuestionnaireStep from "../peronal-questionnaire-step/peronal-questionnaire-step";
+
 import { stepSlugInOrderList } from "../../data";
 import {
   getQuestionnaireStepLink,
@@ -16,7 +18,7 @@ const QuestionnaireStepsScene = () => (
   <Switch>
     <Route
       path={getPersonalQuestionnaireStepLink()}
-      component={() => "PersonalStep"}
+      component={PersonalQuestionnaireStep}
       exact
     />
 
