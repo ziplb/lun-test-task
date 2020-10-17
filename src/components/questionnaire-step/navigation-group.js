@@ -9,7 +9,7 @@ import { getQuestionnaireStepLink } from "../../routes";
 import { stepSlugInOrderList } from "../../data";
 
 const checkIsFirst = (slug) => slug === stepSlugInOrderList[0];
-const checkIsLast = (slug) => slug === stepSlugInOrderList.reverse()[0];
+const checkIsLast = (slug) => slug === [...stepSlugInOrderList].reverse()[0];
 
 const QuestionnaireStepNavigationGroup = ({ stepSlug }) => (
   <div className="QuestionnaireStep-navigationGroup">
