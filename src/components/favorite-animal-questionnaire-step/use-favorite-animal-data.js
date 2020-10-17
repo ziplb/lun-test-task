@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { useSelector } from "react-redux";
 import { object, string, addMethod as addYupMethod } from "yup";
 
-import { submitSocialsStep } from "../../store";
+import { submitFavoriteAnimalStep } from "../../store";
 import { animalList, animalKinds } from "../../data";
 import { useStepNavigation } from "../../hooks";
 
@@ -40,7 +40,7 @@ const useSocialsData = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      submitSocialsStep(values);
+      submitFavoriteAnimalStep(values);
       goToNextStep();
     },
   });
