@@ -4,6 +4,7 @@ import { object, string, addMethod as addYupMethod } from "yup";
 
 import { submitSocialsStep } from "../../store";
 import { animalList, animalKinds } from "../../data";
+import { useStepNavigation } from "../../hooks";
 
 addYupMethod(string, "isCat", function (message) {
   return this.test(
@@ -24,6 +25,7 @@ const validationSchema = object().shape({
 
 const useSocialsData = () => {
   const favoriteAnimalSlug = useSelector((state) => state.favoriteAnimalSlug);
+  const [{}, { goToNextStep }] = useStepNavigation();
 
   const {
     values,
@@ -37,7 +39,10 @@ const useSocialsData = () => {
       favoriteAnimalSlug,
     },
     validationSchema,
-    onSubmit: submitSocialsStep,
+    onSubmit: (values) => {
+      submitSocialsStep(values);
+      goToNextStep();
+    },
   });
 
   return [

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { object, string } from "yup";
 
 import { submitPersonalStep } from "../../store";
+import { useStepNavigation } from "../../hooks";
 
 const validationSchema = object().shape({
   fullName: string()
@@ -18,11 +19,15 @@ const validationSchema = object().shape({
 const usePersonalData = () => {
   const fullName = useSelector((state) => state.fullName);
   const email = useSelector((state) => state.email);
+  const [{}, { goToNextStep }] = useStepNavigation();
 
   const { values, touched, errors, handleChange, handleSubmit } = useFormik({
     initialValues: { fullName, email },
     validationSchema,
-    onSubmit: submitPersonalStep,
+    onSubmit: (values) => {
+      submitPersonalStep(values);
+      goToNextStep();
+    },
   });
 
   return [

@@ -6,31 +6,32 @@ import Button from "../button/button";
 import { IconAngleArrowLeft, IconAngleArrowRight } from "../icons";
 
 import { getQuestionnaireStepLink } from "../../routes";
-import { stepSlugInOrderList } from "../../data";
+import { useStepNavigation } from "../../hooks";
 
-const checkIsFirst = (slug) => slug === stepSlugInOrderList[0];
-const checkIsLast = (slug) => slug === [...stepSlugInOrderList].reverse()[0];
+const QuestionnaireStepNavigationGroup = () => {
+  const [{ prevStepSlug, isCurrentStepLast }] = useStepNavigation();
 
-const QuestionnaireStepNavigationGroup = ({ stepSlug }) => (
-  <div className="QuestionnaireStep-navigationGroup">
-    <div className="QuestionnaireStep-navigationItem">
-      <Button
-        title="Назад"
-        prependIcon={<IconAngleArrowLeft />}
-        component={Link}
-        to={getQuestionnaireStepLink(stepSlug)}
-        isDisabled={checkIsFirst(stepSlug)}
-      />
+  return (
+    <div className="QuestionnaireStep-navigationGroup">
+      <div className="QuestionnaireStep-navigationItem">
+        <Button
+          title="Назад"
+          prependIcon={<IconAngleArrowLeft />}
+          component={Link}
+          to={getQuestionnaireStepLink(prevStepSlug)}
+          isDisabled={!prevStepSlug}
+        />
+      </div>
+
+      <div className="QuestionnaireStep-navigationItem">
+        <Button
+          title={isCurrentStepLast ? "Завершить" : "Вперед"}
+          appendIcon={<IconAngleArrowRight />}
+          isPrimary={isCurrentStepLast}
+        />
+      </div>
     </div>
-
-    <div className="QuestionnaireStep-navigationItem">
-      <Button
-        title={checkIsLast(stepSlug) ? "Завершить" : "Вперед"}
-        appendIcon={<IconAngleArrowRight />}
-        isPrimary={checkIsLast(stepSlug)}
-      />
-    </div>
-  </div>
-);
+  );
+};
 
 export default QuestionnaireStepNavigationGroup;

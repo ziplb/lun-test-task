@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { object, string, addMethod as addYupMethod } from "yup";
 
 import { submitSocialsStep } from "../../store";
+import { useStepNavigation } from "../../hooks";
 
 addYupMethod(string, "requiredIfNotNull", function (message) {
   return this.test("defined", message, (value) => value || value === null);
@@ -34,6 +35,7 @@ const validationSchema = object().shape({
 
 const useSocialsData = () => {
   const socials = useSelector((state) => state.socials);
+  const [{}, { goToNextStep }] = useStepNavigation();
 
   const {
     values,
@@ -50,7 +52,10 @@ const useSocialsData = () => {
       ok: getSocialValue(socials.ok),
     },
     validationSchema,
-    onSubmit: submitSocialsStep,
+    onSubmit: (values) => {
+      goToNextStep();
+      submitSocialsStep(values);
+    },
   });
 
   return [

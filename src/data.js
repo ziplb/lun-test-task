@@ -22,7 +22,7 @@ export const favoriteAnimalStep = {
 
 const stepInOrderList = [
   personalStep,
-  locationStep,
+  // locationStep,
   socialsStep,
   favoriteAnimalStep,
 ];
