@@ -60,3 +60,10 @@ export const animalList = [
     image: { title: "Dog", normal: dogImage, double: dogImage },
   },
 ];
+
+export const socialList = [
+  { slug: "facebook", title: "Facebook" },
+  { slug: "vk", title: "Вконтакте" },
+  { slug: "twitter", title: "Twitter" },
+  { slug: "ok", title: "Одноклассники" },
+];

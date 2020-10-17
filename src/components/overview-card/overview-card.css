@@ -53,17 +53,23 @@
 }
 
 .OverviewCard-social {
+  display: flex;
+  white-space: nowrap;
 }
 
 .OverviewCard-socialTitle {
+  flex: 0 0 auto;
   display: inline-block;
   margin-right: 4px;
   color: #314ecb;
 }
 
 .OverviewCard-socialLink {
+  flex: 1 1 auto;
   color: #666;
   text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition: opacity 0.3s ease-in-out;
 }
 

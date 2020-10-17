@@ -1,6 +1,7 @@
 import { createStore } from "redux";
 import { bindActionCreators } from "redux";
 
+import { socialList } from "../data";
 import { createAction } from "./helpers";
 
 // Types
@@ -24,7 +25,7 @@ const actions = {
 const initialState = {
   fullName: "",
   email: "",
-  socials: { facebook: "", vk: "", twitter: "", odnoklassniki: "" },
+  socialList: socialList.map((social) => ({ ...social, value: null })),
   favoriteAnimal: null,
 };
 
@@ -37,7 +38,14 @@ const reducer = (state = initialState, { type, payload }) => {
 
     case SUBMIT_SOCIALS_STEP: {
       const { socials } = payload;
-      return { ...state, socials };
+
+      return {
+        ...state,
+        socialList: socialList.map((social) => ({
+          ...social,
+          value: socials[social.slug],
+        })),
+      };
     }
 
     case SUBMIT_FAVORITE_ANIMAL_STEP: {

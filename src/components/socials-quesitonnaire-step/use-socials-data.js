@@ -9,32 +9,22 @@ addYupMethod(string, "requiredIfNotNull", function (message) {
   return this.test("defined", message, (value) => value || value === null);
 });
 
-const getSocialValue = (value) => value || null;
-
-const validationSchema = object().shape({
-  facebook: string()
-    .nullable(true)
-    .requiredIfNotNull("Это поле является обязательным")
-    .url("Вы ввели некорректный адрес"),
-
-  twitter: string()
-    .nullable(true)
-    .requiredIfNotNull("Это поле является обязательным")
-    .url("Вы ввели некорректный адрес"),
-
-  ok: string()
-    .nullable(true)
-    .requiredIfNotNull("Это поле является обязательным")
-    .url("Вы ввели некорректный адрес"),
-
-  vk: string()
-    .nullable(true)
-    .requiredIfNotNull("Это поле является обязательным")
-    .url("Вы ввели некорректный адрес"),
-});
+const formValidationSchema = (socialList) =>
+  object().shape(
+    Object.fromEntries(
+      socialList.map(({ slug }) => [
+        slug,
+        string()
+          .nullable(true)
+          .requiredIfNotNull("Это поле является обязательным")
+          .url("Вы ввели некорректный адрес"),
+      ])
+    )
+  );
 
 const useSocialsData = () => {
-  const socials = useSelector((state) => state.socials);
+  const socialList = useSelector((state) => state.socialList);
+  // eslint-disable-next-line no-empty-pattern
   const [{}, { goToNextStep }] = useStepNavigation();
 
   const {
@@ -45,13 +35,10 @@ const useSocialsData = () => {
     handleSubmit,
     setFieldValue,
   } = useFormik({
-    initialValues: {
-      facebook: getSocialValue(socials.facebook),
-      twitter: getSocialValue(socials.twitter),
-      vk: getSocialValue(socials.vk),
-      ok: getSocialValue(socials.ok),
-    },
-    validationSchema,
+    initialValues: Object.fromEntries(
+      socialList.map(({ slug, value }) => [slug, value])
+    ),
+    validationSchema: formValidationSchema(socialList),
     onSubmit: (values) => {
       goToNextStep();
       submitSocialsStep(values);

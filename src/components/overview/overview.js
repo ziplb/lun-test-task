@@ -9,7 +9,7 @@ import "./overview.css";
 const Overview = () => {
   const fullName = useSelector((state) => state.fullName);
   const email = useSelector((state) => state.email);
-  const socials = useSelector((state) => state.socials);
+  const socialList = useSelector((state) => state.socialList);
   const favoriteAnimal = useSelector((state) => state.favoriteAnimal);
 
   console.log(
@@ -24,7 +24,7 @@ const Overview = () => {
         email={email}
         city="Kiev"
         country="Ukraine"
-        socialList={[]}
+        socialList={socialList.filter(({ value }) => value)}
         image={favoriteAnimal.image}
       />
     </div>

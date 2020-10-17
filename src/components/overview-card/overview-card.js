@@ -24,13 +24,13 @@ const OverviewCard = ({
       </div>
 
       <ul className="OverviewCard-socialList">
-        {socialList.map(({ title, link }, id) => (
+        {socialList.map(({ title, value }, id) => (
           <li key={id} className="OverviewCard-socialItem">
             <div className="OverviewCard-social">
               <span className="OverviewCard-socialTitle">{title}:</span>
 
-              <a href={link} className="OverviewCard-socialLink">
-                {link}
+              <a href={value} className="OverviewCard-socialLink">
+                {value}
               </a>
             </div>
           </li>

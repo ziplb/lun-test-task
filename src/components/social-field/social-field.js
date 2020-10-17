@@ -38,7 +38,8 @@ const SocialField = ({
             <div className="SocialField-field">
               <Input
                 name={name}
-                placeholder="Ваша страница в Facebook"
+                placeholder={`Ваша страница в ${label}`}
+                value={value}
                 isError={error}
                 onChange={onChange}
                 isSmall
