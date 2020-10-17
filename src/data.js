@@ -1,3 +1,8 @@
+import firstCatImage from "./assets/images/cat1.jpg";
+import secondCatImage from "./assets/images/cat2.jpg";
+import thirdCatImage from "./assets/images/cat3.jpg";
+import dogImage from "./assets/images/dog4.jpg";
+
 export const personalStep = { slug: "personal", title: "Введитя имя и e-mail" };
 
 export const locationStep = {
@@ -23,3 +28,34 @@ const stepInOrderList = [
 ];
 
 export const stepSlugInOrderList = stepInOrderList.map(({ slug }) => slug);
+
+const animalKinds = {
+  cat: "cat",
+  dog: "dog",
+};
+
+export const animalList = [
+  {
+    slug: "first-cat",
+    kind: animalKinds.cat,
+    image: { title: "First cat", normal: firstCatImage, double: firstCatImage },
+  },
+  {
+    slug: "second-cat",
+    kind: animalKinds.cat,
+    image: {
+      title: "Second cat",
+      normal: secondCatImage,
+      double: secondCatImage,
+    },
+  },
+  {
+    slug: "third-cat",
+    kind: animalKinds.cat,
+    image: { title: "First cat", normal: thirdCatImage, double: thirdCatImage },
+  },
+  {
+    slug: "first-cat",
+    image: { title: "First cat", normal: dogImage, double: dogImage },
+  },
+];
