@@ -40,7 +40,7 @@ const useSocialsData = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      submitFavoriteAnimalStep(values);
+      submitFavoriteAnimalStep(values.favoriteAnimalSlug);
       goToNextStep();
     },
   });
