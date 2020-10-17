@@ -1,38 +1,97 @@
 .ResultCard {
+  display: flex;
+  padding: 24px;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
 }
 
 .ResultCard-contentCol {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 24px;
+  overflow: hidden;
 }
 
 .ResultCard-personal {
 }
 
 .ResultCard-fullName {
+  margin: 0;
+  margin-bottom: 4px;
+  line-height: 1.2;
+  font-size: 20px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .ResultCard-email {
+  color: #666;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .ResultCard-location {
+  color: #666;
 }
 
 .ResultCard-socialList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .ResultCard-socialItem {
+  margin-bottom: 2px;
+}
+
+.ResultCard-socialItem:last-child {
+  margin-bottom: 0;
 }
 
 .ResultCard-social {
 }
 
 .ResultCard-socialTitle {
+  display: inline-block;
+  margin-right: 4px;
+  color: #314ecb;
 }
 
 .ResultCard-socialLink {
+  color: #666;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.ResultCard-socialLink:focus {
+  opacity: 0.8;
+}
+
+.ResultCard-socialLink:hover {
+  opacity: 0.8;
+}
+
+.ResultCard-socialLink:active {
+  opacity: 0.8;
 }
 
 .ResultCard-imageCol {
+  flex: 0 0 200px;
+}
+
+.ResultCard-imagePositioner {
+  position: relative;
+  padding-top: 100%;
 }
 
 .ResultCard-imageHolder {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
