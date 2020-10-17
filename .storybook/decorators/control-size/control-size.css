@@ -1,0 +1,17 @@
+.ControlSize {
+  border: 2px dashed #a0c5e7;
+  animation-name: show-border;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show-border {
+  0% {
+    border: 2px dashed #a0c5e7;
+  }
+
+  100% {
+    border: 2px dashed transparent;
+  }
+}
