@@ -1,4 +1,4 @@
-.ResultCard {
+.OverviewCard {
   display: flex;
   padding: 24px;
   border-radius: 2px;
@@ -6,7 +6,7 @@
   background-color: #fff;
 }
 
-.ResultCard-contentCol {
+.OverviewCard-contentCol {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -15,10 +15,10 @@
   overflow: hidden;
 }
 
-.ResultCard-personal {
+.OverviewCard-personal {
 }
 
-.ResultCard-fullName {
+.OverviewCard-fullName {
   margin: 0;
   margin-bottom: 4px;
   line-height: 1.2;
@@ -28,67 +28,67 @@
   overflow: hidden;
 }
 
-.ResultCard-email {
+.OverviewCard-email {
   color: #666;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.ResultCard-location {
+.OverviewCard-location {
   color: #666;
 }
 
-.ResultCard-socialList {
+.OverviewCard-socialList {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.ResultCard-socialItem {
+.OverviewCard-socialItem {
   margin-bottom: 2px;
 }
 
-.ResultCard-socialItem:last-child {
+.OverviewCard-socialItem:last-child {
   margin-bottom: 0;
 }
 
-.ResultCard-social {
+.OverviewCard-social {
 }
 
-.ResultCard-socialTitle {
+.OverviewCard-socialTitle {
   display: inline-block;
   margin-right: 4px;
   color: #314ecb;
 }
 
-.ResultCard-socialLink {
+.OverviewCard-socialLink {
   color: #666;
   text-decoration: none;
   transition: opacity 0.3s ease-in-out;
 }
 
-.ResultCard-socialLink:focus {
+.OverviewCard-socialLink:focus {
   opacity: 0.8;
 }
 
-.ResultCard-socialLink:hover {
+.OverviewCard-socialLink:hover {
   opacity: 0.8;
 }
 
-.ResultCard-socialLink:active {
+.OverviewCard-socialLink:active {
   opacity: 0.8;
 }
 
-.ResultCard-imageCol {
+.OverviewCard-imageCol {
   flex: 0 0 200px;
 }
 
-.ResultCard-imagePositioner {
+.OverviewCard-imagePositioner {
   position: relative;
   padding-top: 100%;
 }
 
-.ResultCard-imageHolder {
+.OverviewCard-imageHolder {
   position: absolute;
   left: 0;
   top: 0;

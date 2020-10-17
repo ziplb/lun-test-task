@@ -3,7 +3,7 @@ import { number } from "@storybook/addon-knobs";
 import { dogImageSeeds } from "./seeds";
 import { ControlSize } from ".storybook/decorators";
 
-import ResultCard from "../components/result-card/result-card";
+import OverviewCard from "../components/overview-card/overview-card";
 
 const socialList = [
   { title: "Facebook", link: "https://facebook.com" },
@@ -13,7 +13,7 @@ const socialList = [
 ];
 
 export const main = () => (
-  <ResultCard
+  <OverviewCard
     fullName="Yaroslav Illiashenko"
     email="ziplb.work@gmail.com"
     country="Ukraine"
@@ -27,6 +27,6 @@ export const main = () => (
 );
 
 export default {
-  title: "ResultCard",
+  title: "OverviewCard",
   decorators: [(story) => <ControlSize width={520} story={story} />],
 };
