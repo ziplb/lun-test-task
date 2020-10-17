@@ -15,7 +15,7 @@ const QuestionnaireStepNavigationGroup = ({ stepSlug }) => (
   <div className="QuestionnaireStep-navigationGroup">
     <div className="QuestionnaireStep-navigationItem">
       <Button
-        title="Предыдущий"
+        title="Назад"
         prependIcon={<IconAngleArrowLeft />}
         component={Link}
         to={getQuestionnaireStepLink(stepSlug)}
@@ -25,7 +25,7 @@ const QuestionnaireStepNavigationGroup = ({ stepSlug }) => (
 
     <div className="QuestionnaireStep-navigationItem">
       <Button
-        title={checkIsLast(stepSlug) ? "Завершить" : "Следующий"}
+        title={checkIsLast(stepSlug) ? "Завершить" : "Вперед"}
         appendIcon={<IconAngleArrowRight />}
         isPrimary={checkIsLast(stepSlug)}
       />
