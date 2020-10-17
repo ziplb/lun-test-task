@@ -29,6 +29,7 @@ const PersonalQuestionnaireStep = () => {
         <Input
           placeholder="E-mail"
           name="email"
+          type="email"
           value={values.email}
           isError={touched.email && errors.email}
           onChange={onChange}

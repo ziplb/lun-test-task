@@ -1,9 +1,15 @@
 import { useFormik } from "formik";
+import { useSelector } from "react-redux";
+
+import { submitPersonalStep } from "../../store";
 
 const usePersonalData = () => {
+  const fullName = useSelector((state) => state.fullName);
+  const email = useSelector((state) => state.email);
+
   const { values, touched, errors, handleChange, handleSubmit } = useFormik({
-    initialValues: { fullName: "", email: "" },
-    onSubmit: () => console.log("submit"),
+    initialValues: { fullName, email },
+    onSubmit: submitPersonalStep,
   });
 
   return [
