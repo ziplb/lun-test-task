@@ -1,0 +1,41 @@
+.QuestionnaireStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.QuestionnaireStep--autoWidth {
+}
+
+.QuestionnaireStep-title {
+  width: 320px;
+  margin: 0;
+  margin-bottom: 32px;
+  line-height: 1.2;
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.QuestionnaireStep-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.QuestionnaireStep-content {
+  width: 320px;
+  min-height: 240px;
+}
+
+.QuestionnaireStep--autoWidth .QuestionnaireStep-content {
+  width: auto;
+}
+
+.QuestionnaireStep-navigationGroup {
+  display: flex;
+  justify-content: space-between;
+  width: 320px;
+}
+
+.QuestionnaireStep-navigationItem {
+}
