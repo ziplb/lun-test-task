@@ -1,5 +1,5 @@
 .ControlSize {
-  border: 2px dashed #a0c5e7;
+  border: 2px dashed var(--color-light-grey);
   animation-name: show-border;
   animation-duration: 1.5s;
   animation-timing-function: ease-in-out;
@@ -8,7 +8,7 @@
 
 @keyframes show-border {
   0% {
-    border: 2px dashed #a0c5e7;
+    border: 2px dashed var(--color-light-grey);
   }
 
   100% {

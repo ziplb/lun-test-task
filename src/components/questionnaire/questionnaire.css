@@ -5,6 +5,7 @@
 }
 
 .Questionnaire-progress {
+  width: var(--questionnaire-container-width);
   margin-bottom: 24px;
 }
 

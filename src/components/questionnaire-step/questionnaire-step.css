@@ -8,7 +8,7 @@
 }
 
 .QuestionnaireStep-title {
-  width: 400px;
+  width: var(--questionnaire-container-width);
   margin: 0;
   margin-bottom: 32px;
   line-height: 1.2;
@@ -23,7 +23,7 @@
 }
 
 .QuestionnaireStep-content {
-  width: 400px;
+  width: var(--questionnaire-container-width);
   min-height: 240px;
 }
 
@@ -34,7 +34,7 @@
 .QuestionnaireStep-navigationGroup {
   display: flex;
   justify-content: space-between;
-  width: 400px;
+  width: var(--questionnaire-container-width);
 }
 
 .QuestionnaireStep-navigationItem {
