@@ -34,6 +34,7 @@ const useStepNavigation = () => {
 
   return [
     {
+      firstStepSlug: stepSlugInOrderList[0],
       prevStepSlug,
       isCurrentStepLast,
       isCurrentStepFirst,
