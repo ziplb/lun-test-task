@@ -4,6 +4,12 @@
   align-items: center;
 }
 
+@media (max-width: 640px) {
+  .QuestionnaireStep {
+    display: block;
+  }
+}
+
 .QuestionnaireStep--autoWidth {
 }
 
@@ -22,9 +28,21 @@
   align-items: center;
 }
 
+@media (max-width: 640px) {
+  .QuestionnaireStep-form {
+    display: block;
+  }
+}
+
 .QuestionnaireStep-content {
   width: var(--questionnaire-container-width);
   min-height: 240px;
+}
+
+@media (max-width: 640px) {
+  .QuestionnaireStep-content {
+    width: auto;
+  }
 }
 
 .QuestionnaireStep--autoWidth .QuestionnaireStep-content {
@@ -35,6 +53,12 @@
   display: flex;
   justify-content: space-between;
   width: var(--questionnaire-container-width);
+}
+
+@media (max-width: 640px) {
+  .QuestionnaireStep-navigationGroup {
+    width: auto;
+  }
 }
 
 .QuestionnaireStep-navigationItem {

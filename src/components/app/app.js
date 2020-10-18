@@ -21,7 +21,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <AppScene />
+      <div className="App-content">
+        <AppScene />
+      </div>
     </div>
   );
 };

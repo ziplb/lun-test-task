@@ -4,9 +4,15 @@
   align-items: center;
 }
 
+@media (max-width: 640px) {
+  .Questionnaire {
+    display: block;
+  }
+}
+
 .Questionnaire-progress {
   width: var(--questionnaire-container-width);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .Questionnaire-stepsScene {

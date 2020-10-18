@@ -15,6 +15,18 @@
   transform: translate(100%, -50%);
   display: flex;
   align-items: center;
+  max-width: 320px;
+}
+
+@media (max-width: 1100px) {
+  .Field-hint {
+    left: 0;
+    right: auto;
+    top: calc(100% + 2px);
+    transform: none;
+    max-width: auto;
+    font-size: 12px;
+  }
 }
 
 .Field--error .Field-hint {
@@ -26,6 +38,12 @@
   width: 16px;
   border-top: 1px solid currentColor;
   margin-right: 16px;
+}
+
+@media (max-width: 1100px) {
+  .Field-hintSeparator {
+    display: none;
+  }
 }
 
 .Field-hintText {

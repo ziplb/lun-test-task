@@ -5,12 +5,27 @@
   display: flex;
 }
 
+@media (max-width: 480px) {
+  .SocialField-row {
+    display: block;
+  }
+}
+
 .SocialField-condition {
   display: flex;
   align-items: center;
   width: 144px;
   height: 32px;
   margin-right: 24px;
+}
+
+@media (max-width: 480px) {
+  .SocialField-condition {
+    margin-right: 0;
+    width: auto;
+    height: auto;
+    margin-bottom: 12px;
+  }
 }
 
 .SocialField-field {

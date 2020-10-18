@@ -1,4 +1,5 @@
 import React from "react";
+import Media from "react-media";
 
 import Checkbox from "../checkbox/checkbox";
 import Input from "../input/input";
@@ -36,14 +37,18 @@ const SocialField = ({
 
           {checkIsShowed(value) && (
             <div className="SocialField-field">
-              <Input
-                name={name}
-                placeholder={`Ваша страница в ${label}`}
-                value={value}
-                isError={error}
-                onChange={onChange}
-                isSmall
-              />
+              <Media query="(max-width: 640px)">
+                {(isMobile) => (
+                  <Input
+                    name={name}
+                    placeholder={`Ваша страница в ${label}`}
+                    value={value}
+                    isError={error}
+                    onChange={onChange}
+                    isSmall={!isMobile}
+                  />
+                )}
+              </Media>
             </div>
           )}
         </div>
