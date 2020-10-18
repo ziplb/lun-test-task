@@ -9,7 +9,6 @@ const useRedirectToQuestionnaireOnFirstRender = () => {
   const { replace } = useHistory();
 
   useLayoutEffect(() => {
-    console.log("go!");
     const firstStepLink = getQuestionnaireStepLink(stepSlugInOrderList[0]);
     if (pathname === firstStepLink) {
       return;
