@@ -5,16 +5,13 @@ import PersonalQuestionnaireStep from "../personal-questionnaire-step/personal-q
 import SocialsQuestionnaireStep from "../socials-quesitonnaire-step/socials-quesitonnaire-step";
 import FavoriteAnimalQuesitonnaireStep from "../favorite-animal-questionnaire-step/favorite-animal-questionnaire-step";
 
-import { stepSlugInOrderList } from "../../data";
 import {
-  getQuestionnaireStepLink,
   getPersonalQuestionnaireStepLink,
   getLocationQuestionnaireStepLink,
   getSocialsQuestionnaireStepLink,
   getFavoriteAnimalQuestionnaireStepLink,
+  getQuestionnaireFirstStepLink,
 } from "../../routes";
-
-const firstStepSlug = stepSlugInOrderList[0];
 
 const QuestionnaireStepsScene = () => (
   <Switch>
@@ -42,7 +39,7 @@ const QuestionnaireStepsScene = () => (
       exact
     />
 
-    <Redirect to={getQuestionnaireStepLink(firstStepSlug)} />
+    <Redirect to={getQuestionnaireFirstStepLink()} />
   </Switch>
 );
 

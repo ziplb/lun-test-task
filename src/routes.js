@@ -3,6 +3,7 @@ import {
   locationStep,
   socialsStep,
   favoriteAnimalStep,
+  stepSlugInOrderList,
 } from "./data";
 
 export const getIndexLink = () => "/";
@@ -11,6 +12,8 @@ export const getOverviewLink = () => "/overview";
 export const getQuestionnaireLink = () => "/questionnaire";
 export const getQuestionnaireStepLink = (step) =>
   `${getQuestionnaireLink()}/${step}`;
+export const getQuestionnaireFirstStepLink = () =>
+  getQuestionnaireStepLink(stepSlugInOrderList[0]);
 
 export const getPersonalQuestionnaireStepLink = () =>
   getQuestionnaireStepLink(personalStep.slug);

@@ -13,6 +13,7 @@ import { createAction } from "./helpers";
 const SUBMIT_PERSONAL_STEP = "SUBMIT_PERSONAL_STEP";
 const SUBMIT_SOCIALS_STEP = "SUBMIT_SOCIALS_STEP";
 const SUBMIT_FAVORITE_ANIMAL_STEP = "SUBMIT_FAVORITE_ANIMAL_STEP";
+const RESTART = "RESTART";
 
 // Actions
 const actions = {
@@ -24,6 +25,8 @@ const actions = {
 
   submitFavoriteAnimalStep: (favoriteAnimal) =>
     createAction(SUBMIT_FAVORITE_ANIMAL_STEP, { favoriteAnimal }),
+
+  restart: () => createAction(RESTART),
 };
 
 // Reducer
@@ -67,8 +70,15 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         favoriteAnimal,
-        filledStepSlugList: [...state.filledStepSlugList, favoriteAnimal.slug],
+        filledStepSlugList: [
+          ...state.filledStepSlugList,
+          favoriteAnimalStep.slug,
+        ],
       };
+    }
+
+    case RESTART: {
+      return initialState;
     }
 
     default:
@@ -82,7 +92,13 @@ const {
   submitPersonalStep,
   submitSocialsStep,
   submitFavoriteAnimalStep,
+  restart,
 } = bindActionCreators(actions, store.dispatch);
 
-export { submitPersonalStep, submitSocialsStep, submitFavoriteAnimalStep };
+export {
+  submitPersonalStep,
+  submitSocialsStep,
+  submitFavoriteAnimalStep,
+  restart,
+};
 export default store;

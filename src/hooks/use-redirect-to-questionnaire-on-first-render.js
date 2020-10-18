@@ -2,15 +2,18 @@ import { useLayoutEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import { useStepNavigation } from "../hooks";
-import { getQuestionnaireStepLink } from "../routes";
+import { getQuestionnaireLink } from "../routes";
 
 const useRedirectToQuestionnaireOnFirstRender = () => {
   const { replace } = useHistory();
-  const [{ firstStepSlug, isCurrentStepFirst }] = useStepNavigation();
+  const [{ isCurrentStepFirst }] = useStepNavigation();
 
   useLayoutEffect(
-    () =>
-      !isCurrentStepFirst && replace(getQuestionnaireStepLink(firstStepSlug)),
+    () => {
+      if (!isCurrentStepFirst) {
+        replace(getQuestionnaireLink());
+      }
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
