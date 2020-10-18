@@ -1,12 +1,12 @@
 import { useLayoutEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import { stepSlugInOrderList } from "../data";
 import { getQuestionnaireLink } from "../routes";
+import { useDataFromRedux } from "../hooks";
 
 const useRedirectToQuestionnaireIfItNotFinished = () => {
-  const filledStepSlugList = useSelector((state) => state.filledStepSlugList);
+  const { filledStepSlugList } = useDataFromRedux();
   const { replace } = useHistory();
 
   const isFinished = stepSlugInOrderList.length === filledStepSlugList.length;

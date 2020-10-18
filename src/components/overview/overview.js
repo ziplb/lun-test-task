@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import OverviewCard from "../overview-card/overview-card";
@@ -7,15 +6,15 @@ import Button from "../button/button";
 
 import { restart } from "../../store";
 import { getQuestionnaireFirstStepLink } from "../../routes";
-import { useRedirectToQuestionnaireIfItNotFinished } from "../../hooks";
+import {
+  useRedirectToQuestionnaireIfItNotFinished,
+  useDataFromRedux,
+} from "../../hooks";
 
 import "./overview.css";
 
 const Overview = () => {
-  const fullName = useSelector((state) => state.fullName);
-  const email = useSelector((state) => state.email);
-  const socialList = useSelector((state) => state.socialList);
-  const favoriteAnimal = useSelector((state) => state.favoriteAnimal);
+  const { fullName, email, socialList, favoriteAnimal } = useDataFromRedux();
   const { push } = useHistory();
   useRedirectToQuestionnaireIfItNotFinished();
 

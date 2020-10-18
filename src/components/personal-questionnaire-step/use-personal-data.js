@@ -1,9 +1,8 @@
 import { useFormik } from "formik";
-import { useSelector } from "react-redux";
 import { object, string } from "yup";
 
 import { submitPersonalStep } from "../../store";
-import { useStepNavigation } from "../../hooks";
+import { useStepNavigation, useDataFromRedux } from "../../hooks";
 
 const validationSchema = object().shape({
   fullName: string()
@@ -17,8 +16,8 @@ const validationSchema = object().shape({
 });
 
 const usePersonalData = () => {
-  const fullName = useSelector((state) => state.fullName);
-  const email = useSelector((state) => state.email);
+  const { fullName, email } = useDataFromRedux();
+  // eslint-disable-next-line no-empty-pattern
   const [{}, { goToNextStep }] = useStepNavigation();
 
   const { values, touched, errors, handleChange, handleSubmit } = useFormik({

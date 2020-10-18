@@ -1,10 +1,9 @@
 import { useFormik } from "formik";
-import { useSelector } from "react-redux";
 import { object, addMethod as addYupMethod } from "yup";
 
 import { submitFavoriteAnimalStep } from "../../store";
 import { animalKinds } from "../../data";
-import { useStepNavigation } from "../../hooks";
+import { useStepNavigation, useDataFromRedux } from "../../hooks";
 
 addYupMethod(object, "isCat", function (message) {
   return this.test(
@@ -22,7 +21,7 @@ const validationSchema = object().shape({
 });
 
 const useFavoriteAnimalData = () => {
-  const favoriteAnimal = useSelector((state) => state.favoriteAnimal);
+  const { favoriteAnimal } = useDataFromRedux();
   // eslint-disable-next-line no-empty-pattern
   const [{}, { goToNextStep }] = useStepNavigation();
 

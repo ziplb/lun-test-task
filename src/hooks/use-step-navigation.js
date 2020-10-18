@@ -1,13 +1,13 @@
 import { useHistory, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import { stepSlugInOrderList } from "../data";
 import { getQuestionnaireStepLink, getOverviewLink } from "../routes";
+import useDataFromRedux from "./use-data-from-redux";
 
 const useStepNavigation = () => {
   const { push } = useHistory();
   const { pathname } = useLocation();
-  const filledStepSlugList = useSelector((state) => state.filledStepSlugList);
+  const { filledStepSlugList } = useDataFromRedux();
 
   const currentStepSlug = pathname.slice(pathname.lastIndexOf("/") + 1);
   const currentStepSlugIndex = stepSlugInOrderList.indexOf(currentStepSlug);
