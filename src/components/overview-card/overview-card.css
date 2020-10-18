@@ -6,6 +6,12 @@
   background-color: var(--color-white);
 }
 
+@media (max-width: 560px) {
+  .OverviewCard {
+    display: block;
+  }
+}
+
 .OverviewCard-contentCol {
   flex: 1 1 auto;
   display: flex;
@@ -15,7 +21,15 @@
   overflow: hidden;
 }
 
+@media (max-width: 560px) {
+  .OverviewCard-contentCol {
+    margin-right: 0;
+    margin-bottom: 24px;
+  }
+}
+
 .OverviewCard-personal {
+  margin-bottom: 16px;
 }
 
 .OverviewCard-fullName {
@@ -40,6 +54,7 @@
 
 .OverviewCard-socialList {
   margin: 0;
+  margin-top: 16px;
   padding: 0;
   list-style: none;
 }

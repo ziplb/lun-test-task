@@ -2,8 +2,14 @@
 }
 
 .Overview-card {
-  width: 640px;
+  width: 600px;
   margin-bottom: 32px;
+}
+
+@media (max-width: 640px) {
+  .Overview-card {
+    width: auto;
+  }
 }
 
 .Overview-restartButton {
