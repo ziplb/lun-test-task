@@ -5,6 +5,7 @@ import Questionnaire from "../questionnaire/questionnaire";
 import Overview from "../overview/overview";
 
 import { getQuestionnaireLink, getOverviewLink } from "../../routes";
+import { useRedirectToQuestionnaireOnFirstRender } from "../../hooks";
 
 import "./app.css";
 
@@ -12,15 +13,17 @@ const AppScene = () => (
   <Switch>
     <Route path={getQuestionnaireLink()} component={Questionnaire} />
     <Route path={getOverviewLink()} component={Overview} exact />
-
-    <Redirect to={getQuestionnaireLink()} />
   </Switch>
 );
 
-const App = () => (
-  <div className="App">
-    <AppScene />
-  </div>
-);
+const App = () => {
+  useRedirectToQuestionnaireOnFirstRender();
+
+  return (
+    <div className="App">
+      <AppScene />
+    </div>
+  );
+};
 
 export default App;
