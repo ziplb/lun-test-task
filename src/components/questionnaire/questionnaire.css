@@ -1,0 +1,12 @@
+.Questionnaire {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Questionnaire-progress {
+  margin-bottom: 24px;
+}
+
+.Questionnaire-stepsScene {
+}

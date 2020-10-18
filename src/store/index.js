@@ -1,7 +1,12 @@
 import { createStore } from "redux";
 import { bindActionCreators } from "redux";
 
-import { socialList } from "../data";
+import {
+  personalStep,
+  socialsStep,
+  favoriteAnimalStep,
+  socialList,
+} from "../data";
 import { createAction } from "./helpers";
 
 // Types
@@ -27,13 +32,20 @@ const initialState = {
   email: "",
   socialList: socialList.map((social) => ({ ...social, value: null })),
   favoriteAnimal: null,
+  filledStepSlugList: [],
 };
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case SUBMIT_PERSONAL_STEP: {
       const { fullName, email } = payload;
-      return { ...state, fullName, email };
+
+      return {
+        ...state,
+        fullName,
+        email,
+        filledStepSlugList: [...state.filledStepSlugList, personalStep.slug],
+      };
     }
 
     case SUBMIT_SOCIALS_STEP: {
@@ -45,12 +57,18 @@ const reducer = (state = initialState, { type, payload }) => {
           ...social,
           value: socials[social.slug],
         })),
+        filledStepSlugList: [...state.filledStepSlugList, socialsStep.slug],
       };
     }
 
     case SUBMIT_FAVORITE_ANIMAL_STEP: {
       const { favoriteAnimal } = payload;
-      return { ...state, favoriteAnimal };
+
+      return {
+        ...state,
+        favoriteAnimal,
+        filledStepSlugList: [...state.filledStepSlugList, favoriteAnimal.slug],
+      };
     }
 
     default:
