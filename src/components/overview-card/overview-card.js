@@ -1,6 +1,7 @@
 import React from "react";
 
 import Image from "../image/image";
+import SquareImagePositioner from "../square-image-positioner/square-image-positioner";
 
 import "./overview-card.css";
 
@@ -39,11 +40,9 @@ const OverviewCard = ({
     </div>
 
     <div className="OverviewCard-imageCol">
-      <div className="OverviewCard-imagePositioner">
-        <div className="OverviewCard-imageHolder">
-          <Image image={image} isAdaptable />
-        </div>
-      </div>
+      <SquareImagePositioner>
+        <Image image={image} isAdaptable />
+      </SquareImagePositioner>
     </div>
   </div>
 );

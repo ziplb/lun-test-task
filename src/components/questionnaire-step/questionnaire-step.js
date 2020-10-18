@@ -7,13 +7,13 @@ import QuestionnaireStepNavigationGroup from "./navigation-group";
 import { useStepNavigation } from "../../hooks";
 import "./questionnaire-step.css";
 
-const QuestionnaireStep = ({ step, children, isAutoWidth, onSubmit }) => {
+const QuestionnaireStep = ({ step, children, isWide, onSubmit }) => {
   const [{ currentStepSlugIndex }] = useStepNavigation();
 
   return (
     <div
       className={cn("QuestionnaireStep", {
-        "QuestionnaireStep--autoWidth": isAutoWidth,
+        "QuestionnaireStep--wide": isWide,
       })}
     >
       <h2 className="QuestionnaireStep-title">

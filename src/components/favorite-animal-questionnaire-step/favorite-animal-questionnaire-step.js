@@ -18,11 +18,7 @@ const FavoriteAnimalQuesitonnaireStep = () => {
 
   return (
     <div className="FavoriteAnimalQuesitonnaireStep">
-      <QuestionnaireStep
-        step={favoriteAnimalStep}
-        onSubmit={onSubmit}
-        isAutoWidth
-      >
+      <QuestionnaireStep step={favoriteAnimalStep} onSubmit={onSubmit} isWide>
         <div className="FavoriteAnimalQuesitonnaireStep-grid">
           {animalList.map((animal) => (
             <div

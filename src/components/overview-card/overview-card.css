@@ -102,19 +102,6 @@
 
 .OverviewCard-imageCol {
   flex: 0 0 200px;
-}
-
-.OverviewCard-imagePositioner {
-  position: relative;
-  padding-top: 100%;
   border-radius: 2px;
   overflow: hidden;
-}
-
-.OverviewCard-imageHolder {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
 }

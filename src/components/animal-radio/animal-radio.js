@@ -1,6 +1,7 @@
 import React from "react";
 
 import Image from "../image/image";
+import SquareImagePositioner from "../square-image-positioner/square-image-positioner";
 
 import "./animal-radio.css";
 
@@ -24,7 +25,9 @@ const AnimalRadio = ({
       />
 
       <span className="AnimalRadio-image">
-        <Image image={image} isAdaptable />
+        <SquareImagePositioner>
+          <Image image={image} isAdaptable />
+        </SquareImagePositioner>
       </span>
     </label>
   </div>

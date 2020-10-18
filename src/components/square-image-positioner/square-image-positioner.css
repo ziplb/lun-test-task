@@ -1,0 +1,15 @@
+.SquareImagePositioner {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding-top: 100%;
+  vertical-align: top;
+}
+
+.SquareImagePositioner-el {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
