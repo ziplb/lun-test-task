@@ -21,11 +21,11 @@
 }
 
 .Button:focus {
-  background-color: #fafafa;
+  background-color: #f8f8f8;
 }
 
 .Button:hover {
-  background-color: #fafafa;
+  background-color: #f8f8f8;
 }
 
 .Button:active {
