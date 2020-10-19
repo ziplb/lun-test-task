@@ -7,6 +7,7 @@ import {
   favoriteAnimalStep,
   socialList,
 } from "../data";
+import { filterDuplicate } from "../utils";
 import { createAction } from "./helpers";
 
 // Types
@@ -47,7 +48,10 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         fullName,
         email,
-        filledStepSlugList: [...state.filledStepSlugList, personalStep.slug],
+        filledStepSlugList: filterDuplicate([
+          ...state.filledStepSlugList,
+          personalStep.slug,
+        ]),
       };
     }
 
@@ -60,7 +64,10 @@ const reducer = (state = initialState, { type, payload }) => {
           ...social,
           value: socials[social.slug],
         })),
-        filledStepSlugList: [...state.filledStepSlugList, socialsStep.slug],
+        filledStepSlugList: filterDuplicate([
+          ...state.filledStepSlugList,
+          socialsStep.slug,
+        ]),
       };
     }
 
@@ -70,10 +77,10 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         favoriteAnimal,
-        filledStepSlugList: [
+        filledStepSlugList: filterDuplicate([
           ...state.filledStepSlugList,
           favoriteAnimalStep.slug,
-        ],
+        ]),
       };
     }
 
