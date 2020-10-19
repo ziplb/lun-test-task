@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect, useLocation } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import PersonalQuestionnaireStep from "../personal-questionnaire-step/personal-questionnaire-step";
 import SocialsQuestionnaireStep from "../socials-quesitonnaire-step/socials-quesitonnaire-step";
