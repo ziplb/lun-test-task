@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import OverviewCard from "../overview-card/overview-card";
 import Button from "../button/button";
@@ -28,6 +29,10 @@ const Overview = () => {
 
   return (
     <div className="Overview">
+      <Helmet>
+        <title>ЛУН - Предпросмотр</title>
+      </Helmet>
+
       <div className="Overview-card">
         <OverviewCard
           fullName={fullName}
