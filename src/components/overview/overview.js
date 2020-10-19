@@ -14,7 +14,7 @@ import {
 import "./overview.css";
 
 const Overview = () => {
-  const { fullName, email, socialList, favoriteAnimal } = useDataFromRedux();
+  const [{ fullName, email, socialList, favoriteAnimal }] = useDataFromRedux();
   const { push } = useHistory();
   useRedirectToQuestionnaireIfItNotFinished();
 

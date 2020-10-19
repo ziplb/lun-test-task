@@ -22,7 +22,7 @@ const formValidationSchema = (socialList) =>
   );
 
 const useSocialsData = () => {
-  const { socialList } = useDataFromRedux();
+  const [{ socialList }] = useDataFromRedux();
   // eslint-disable-next-line no-empty-pattern
   const [{}, { goToNextStep }] = useStepNavigation();
 

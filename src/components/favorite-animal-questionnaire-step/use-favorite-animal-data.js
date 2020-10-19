@@ -21,7 +21,7 @@ const validationSchema = object().shape({
 });
 
 const useFavoriteAnimalData = () => {
-  const { favoriteAnimal } = useDataFromRedux();
+  const [{ favoriteAnimal }] = useDataFromRedux();
   // eslint-disable-next-line no-empty-pattern
   const [{}, { goToNextStep }] = useStepNavigation();
 

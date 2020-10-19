@@ -16,7 +16,7 @@ const validationSchema = object().shape({
 });
 
 const usePersonalData = () => {
-  const { fullName, email } = useDataFromRedux();
+  const [{ fullName, email }] = useDataFromRedux();
   // eslint-disable-next-line no-empty-pattern
   const [{}, { goToNextStep }] = useStepNavigation();
 

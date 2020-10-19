@@ -6,7 +6,7 @@ import { getQuestionnaireLink } from "../routes";
 import { useDataFromRedux } from "../hooks";
 
 const useRedirectToQuestionnaireIfItNotFinished = () => {
-  const { filledStepSlugList } = useDataFromRedux();
+  const [{ filledStepSlugList }] = useDataFromRedux();
   const { replace } = useHistory();
 
   const isFinished = stepSlugInOrderList.length === filledStepSlugList.length;

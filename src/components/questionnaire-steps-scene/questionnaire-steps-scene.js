@@ -7,40 +7,49 @@ import FavoriteAnimalQuesitonnaireStep from "../favorite-animal-questionnaire-st
 
 import {
   getPersonalQuestionnaireStepLink,
-  getLocationQuestionnaireStepLink,
+  // getLocationQuestionnaireStepLink,
   getSocialsQuestionnaireStepLink,
   getFavoriteAnimalQuestionnaireStepLink,
   getQuestionnaireFirstStepLink,
 } from "../../routes";
+import { useDataFromRedux } from "../../hooks";
 
-const QuestionnaireStepsScene = () => (
-  <Switch>
-    <Route
-      path={getPersonalQuestionnaireStepLink()}
-      component={PersonalQuestionnaireStep}
-      exact
-    />
+const QuestionnaireStepsScene = () => {
+  const [{ isPersonalStepFilled, isSocialsStepFilled }] = useDataFromRedux();
 
-    <Route
-      path={getLocationQuestionnaireStepLink()}
-      component={() => "LocationStep"}
-      exact
-    />
+  return (
+    <Switch>
+      <Route
+        path={getPersonalQuestionnaireStepLink()}
+        component={PersonalQuestionnaireStep}
+        exact
+      />
 
-    <Route
-      path={getSocialsQuestionnaireStepLink()}
-      component={SocialsQuestionnaireStep}
-      exact
-    />
+      {/* <Route
+        path={getLocationQuestionnaireStepLink()}
+        component={() => "LocationStep"}
+        exact
+      /> */}
 
-    <Route
-      path={getFavoriteAnimalQuestionnaireStepLink()}
-      component={FavoriteAnimalQuesitonnaireStep}
-      exact
-    />
+      {isPersonalStepFilled && (
+        <Route
+          path={getSocialsQuestionnaireStepLink()}
+          component={SocialsQuestionnaireStep}
+          exact
+        />
+      )}
 
-    <Redirect to={getQuestionnaireFirstStepLink()} />
-  </Switch>
-);
+      {isSocialsStepFilled && (
+        <Route
+          path={getFavoriteAnimalQuestionnaireStepLink()}
+          component={FavoriteAnimalQuesitonnaireStep}
+          exact
+        />
+      )}
+
+      <Redirect to={getQuestionnaireFirstStepLink()} />
+    </Switch>
+  );
+};
 
 export default QuestionnaireStepsScene;
