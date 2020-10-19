@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import { personalStep, socialsStep, favoriteAnimalStep } from "../data";
+import { personalStep, socialsStep } from "../data";
 
 const useDataFromRedux = () => {
   const fullName = useSelector((state) => state.fullName);
@@ -12,10 +12,7 @@ const useDataFromRedux = () => {
   const checkIsStepFilled = (stepSlug) => filledStepSlugList.includes(stepSlug);
 
   const isPersonalStepFilled = checkIsStepFilled(personalStep.slug);
-  const isSocialsStepFilled = checkIsStepFilled(personalStep.slug);
-  const isFavoriteAnimalFilled = checkIsStepFilled(favoriteAnimalStep.slug);
-  const isQuestionnaireFilled =
-    isPersonalStepFilled && isSocialsStepFilled && isFavoriteAnimalFilled;
+  const isSocialsStepFilled = checkIsStepFilled(socialsStep.slug);
 
   return [
     {
