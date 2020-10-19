@@ -39,8 +39,8 @@ const useSocialsData = () => {
     ),
     validationSchema: formValidationSchema(socialList),
     onSubmit: (values) => {
-      goToNextStep();
       submitSocialsStep(values);
+      goToNextStep();
     },
   });
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import Questionnaire from "../questionnaire/questionnaire";
 import Overview from "../overview/overview";
@@ -12,6 +12,8 @@ const AppScene = () => (
   <Switch>
     <Route path={getQuestionnaireLink()} component={Questionnaire} />
     <Route path={getOverviewLink()} component={Overview} exact />
+
+    <Redirect to={getQuestionnaireLink()} />
   </Switch>
 );
 

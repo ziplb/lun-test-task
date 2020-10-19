@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useSelector } from "react-redux";
 
 import { personalStep, socialsStep } from "../data";
@@ -9,7 +10,10 @@ const useDataFromRedux = () => {
   const favoriteAnimal = useSelector((state) => state.favoriteAnimal);
   const filledStepSlugList = useSelector((state) => state.filledStepSlugList);
 
-  const checkIsStepFilled = (stepSlug) => filledStepSlugList.includes(stepSlug);
+  const checkIsStepFilled = useCallback(
+    (stepSlug) => filledStepSlugList.includes(stepSlug),
+    [filledStepSlugList]
+  );
 
   const isPersonalStepFilled = checkIsStepFilled(personalStep.slug);
   const isSocialsStepFilled = checkIsStepFilled(socialsStep.slug);
