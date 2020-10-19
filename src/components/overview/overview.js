@@ -10,6 +10,8 @@ import {
   useRedirectToQuestionnaireIfItNotFinished,
   useDataFromRedux,
 } from "../../hooks";
+import { shuffleArray } from "../../utils";
+import { animalList } from "../../data";
 
 import "./overview.css";
 
@@ -21,6 +23,7 @@ const Overview = () => {
   const handleClick = () => {
     restart();
     push(getQuestionnaireFirstStepLink());
+    shuffleArray(animalList);
   };
 
   return (

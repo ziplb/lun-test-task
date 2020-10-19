@@ -6,7 +6,11 @@ import { Provider } from "react-redux";
 import App from "./components/app/app";
 
 import store from "./store";
+import { shuffleArray } from "./utils";
+import { animalList } from "./data";
 import "./index.css";
+
+shuffleArray(animalList);
 
 ReactDOM.render(
   <React.StrictMode>
