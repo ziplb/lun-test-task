@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Input from "../input/input";
 import AutocompleteOption from "../autocomplete-option/autocomplete-option";
 
+import useScrollingIntoView from "./use-scrolling-into-view";
 import "./autocomplete.css";
 
 const filterOptionList = (list, value) =>
@@ -20,6 +21,7 @@ const Autocomplete = ({
 }) => {
   const [isOptionsShowed, setIsOptionsShowed] = useState(false);
   const [isFiltered, setIsFiltered] = useState(false);
+  const { optionListRef, selectedOptionRef } = useScrollingIntoView();
 
   const filteredOptionList = filterOptionList(optionList, value);
   const resultOptionList = isFiltered ? filteredOptionList : optionList;
@@ -58,16 +60,24 @@ const Autocomplete = ({
       </div>
 
       {isOptionsShowed && (
-        <div className="Autocomplete-optionList">
-          {resultOptionList.map((option) => (
-            <div key={option.value} className="Autocomplete-optionItem">
-              <AutocompleteOption
-                option={option}
-                isSelected={selectedOption?.value === option.value}
-                onClick={handleOptionSelect}
-              />
-            </div>
-          ))}
+        <div className="Autocomplete-optionList" ref={optionListRef}>
+          {resultOptionList.map((option) => {
+            const isSelected = selectedOption?.value === option.value;
+
+            return (
+              <div
+                key={option.value}
+                className="Autocomplete-optionItem"
+                ref={isSelected ? selectedOptionRef : null}
+              >
+                <AutocompleteOption
+                  option={option}
+                  isSelected={isSelected}
+                  onClick={handleOptionSelect}
+                />
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
