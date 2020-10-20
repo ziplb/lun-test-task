@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Input from "../input/input";
 import AutocompleteOption from "../autocomplete-option/autocomplete-option";
 
 import useScrollingIntoView from "./use-scrolling-into-view";
 import "./autocomplete.css";
+
+const KEY_CODES = {
+  UP: 38,
+  DOWN: 40,
+};
 
 const filterOptionList = (list, value) =>
   list.filter(
@@ -22,9 +27,14 @@ const Autocomplete = ({
   const [isOptionsShowed, setIsOptionsShowed] = useState(false);
   const [isFiltered, setIsFiltered] = useState(false);
   const { optionListRef, selectedOptionRef } = useScrollingIntoView();
+  const [highlightedOption, setHighlightedOption] = useState(null);
 
   const filteredOptionList = filterOptionList(optionList, value);
   const resultOptionList = isFiltered ? filteredOptionList : optionList;
+
+  useEffect(() => {
+    setHighlightedOption(selectedOption);
+  }, [selectedOption]);
 
   const handleInpuClick = () => {
     setIsOptionsShowed(true);
@@ -41,6 +51,15 @@ const Autocomplete = ({
     setIsFiltered(true);
   };
 
+  const handleInputKeyDown = (e) => {
+    const { keyCode } = e;
+    const { UP, DOWN } = KEY_CODES;
+
+    if (keyCode === UP || keyCode === DOWN) {
+      setIsOptionsShowed(true);
+    }
+  };
+
   const handleOptionSelect = (option) => {
     onOptionSelect(option);
     setIsOptionsShowed(false);
@@ -55,6 +74,7 @@ const Autocomplete = ({
           onFocus={handleInputFocus}
           onBlur={() => setIsOptionsShowed(false)}
           onChange={handleInputChange}
+          onKeyDown={handleInputKeyDown}
           {...rest}
         />
       </div>
@@ -73,6 +93,7 @@ const Autocomplete = ({
                 <AutocompleteOption
                   option={option}
                   isSelected={isSelected}
+                  isHighlighted={highlightedOption?.value === option.value}
                   onClick={handleOptionSelect}
                 />
               </div>
