@@ -5,8 +5,6 @@ import Input from "../input/input";
 
 import "./autocomplete.css";
 
-const LEFT_MOUSE_BUTTON_CODE = 0;
-
 const Autocomplete = ({
   value,
   optionList,
