@@ -20,12 +20,9 @@ const Autocomplete = ({
     ({ title }) => title.toLowerCase().indexOf(value.toLowerCase()) === 0
   );
 
-  const handleClick = (option) => (e) => {
-    const isLeftMouseButton = e.button === LEFT_MOUSE_BUTTON_CODE;
-
-    if (isLeftMouseButton) {
-      onOptionSelect(option);
-    }
+  const handleOptionSelect = (option) => {
+    onOptionSelect(option);
+    setIsOptionsShowed(false);
   };
 
   return (
@@ -33,6 +30,7 @@ const Autocomplete = ({
       <div className="Autocomplete-input">
         <Input
           value={value}
+          onClick={() => setIsOptionsShowed(true)}
           onFocus={() => setIsOptionsShowed(true)}
           onBlur={() => setIsOptionsShowed(false)}
           {...rest}
@@ -48,7 +46,8 @@ const Autocomplete = ({
                   "Autocomplete-option--selected":
                     selectedOption?.value === option.value,
                 })}
-                onMouseDown={handleClick(option)}
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => handleOptionSelect(option)}
               >
                 {option.title}
               </button>
