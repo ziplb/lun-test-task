@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import cn from "classnames";
 
 import Input from "../input/input";
+import AutocompleteOption from "../autocomplete-option/autocomplete-option";
 
 import "./autocomplete.css";
 
@@ -61,17 +61,11 @@ const Autocomplete = ({
         <div className="Autocomplete-optionList">
           {resultOptionList.map((option) => (
             <div key={option.value} className="Autocomplete-optionItem">
-              <button
-                className={cn("Autocomplete-option", {
-                  "Autocomplete-option--selected":
-                    selectedOption?.value === option.value,
-                })}
-                disabled={selectedOption?.value === option.value}
-                onMouseDown={(e) => e.preventDefault()}
-                onClick={() => handleOptionSelect(option)}
-              >
-                {option.title}
-              </button>
+              <AutocompleteOption
+                option={option}
+                isSelected={selectedOption?.value === option.value}
+                onClick={handleOptionSelect}
+              />
             </div>
           ))}
         </div>

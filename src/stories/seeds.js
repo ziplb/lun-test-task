@@ -14,4 +14,7 @@ export const optionListSeeds = [
   { title: "Щенок", value: "puppy" },
   { title: "Кролик", value: "rabbit" },
   { title: "Крольчонок", value: "bunny" },
+  { title: "Заяц", value: "hare" },
+  { title: "Лисичка", value: "fox" },
+  { title: "Медвежонок", value: "bear-cub" },
 ];
