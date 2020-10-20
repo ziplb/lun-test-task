@@ -5,6 +5,8 @@ import Input from "../input/input";
 
 import "./autocomplete.css";
 
+const LEFT_MOUSE_BUTTON_CODE = 0;
+
 const Autocomplete = ({
   value,
   optionList,
@@ -17,6 +19,14 @@ const Autocomplete = ({
   const filteredValues = optionList.filter(
     ({ title }) => title.toLowerCase().indexOf(value.toLowerCase()) === 0
   );
+
+  const handleClick = (option) => (e) => {
+    const isLeftMouseButton = e.button === LEFT_MOUSE_BUTTON_CODE;
+
+    if (isLeftMouseButton) {
+      onOptionSelect(option);
+    }
+  };
 
   return (
     <div className="Autocomplete">
@@ -38,7 +48,7 @@ const Autocomplete = ({
                   "Autocomplete-option--selected":
                     selectedOption?.value === option.value,
                 })}
-                onMouseDown={() => onOptionSelect(option)}
+                onMouseDown={handleClick(option)}
               >
                 {option.title}
               </button>
