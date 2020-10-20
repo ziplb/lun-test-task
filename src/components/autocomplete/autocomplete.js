@@ -5,18 +5,39 @@ import Input from "../input/input";
 
 import "./autocomplete.css";
 
+const filterOptionList = (list, value) =>
+  list.filter(
+    ({ title }) => title.toLowerCase().indexOf(value.toLowerCase()) === 0
+  );
+
 const Autocomplete = ({
   value,
   optionList,
   selectedOption,
+  onChange,
   onOptionSelect,
   ...rest
 }) => {
   const [isOptionsShowed, setIsOptionsShowed] = useState(false);
+  const [isFiltered, setIsFiltered] = useState(false);
 
-  const filteredValues = optionList.filter(
-    ({ title }) => title.toLowerCase().indexOf(value.toLowerCase()) === 0
-  );
+  const filteredOptionList = filterOptionList(optionList, value);
+  const resultOptionList = isFiltered ? filteredOptionList : optionList;
+
+  const handleInpuClick = () => {
+    setIsOptionsShowed(true);
+    setIsFiltered(false);
+  };
+
+  const handleInputFocus = () => {
+    setIsOptionsShowed(true);
+    setIsFiltered(false);
+  };
+
+  const handleInputChange = (e) => {
+    onChange(e);
+    setIsFiltered(true);
+  };
 
   const handleOptionSelect = (option) => {
     onOptionSelect(option);
@@ -28,16 +49,17 @@ const Autocomplete = ({
       <div className="Autocomplete-input">
         <Input
           value={value}
-          onClick={() => setIsOptionsShowed(true)}
-          onFocus={() => setIsOptionsShowed(true)}
+          onClick={handleInpuClick}
+          onFocus={handleInputFocus}
           onBlur={() => setIsOptionsShowed(false)}
+          onChange={handleInputChange}
           {...rest}
         />
       </div>
 
       {isOptionsShowed && (
         <div className="Autocomplete-optionList">
-          {filteredValues.map((option) => (
+          {resultOptionList.map((option) => (
             <div key={option.value} className="Autocomplete-optionItem">
               <button
                 className={cn("Autocomplete-option", {
