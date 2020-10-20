@@ -46,6 +46,7 @@ const Autocomplete = ({
                   "Autocomplete-option--selected":
                     selectedOption?.value === option.value,
                 })}
+                disabled={selectedOption?.value === option.value}
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => handleOptionSelect(option)}
               >
