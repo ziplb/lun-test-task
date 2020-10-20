@@ -12,8 +12,8 @@ const Autocomplete = ({
   onOptionSelect,
   ...rest
 }) => {
-  const filteredValues = optionList.filter(({ title }) =>
-    title.toLowerCase().includes(value.toLowerCase())
+  const filteredValues = optionList.filter(
+    ({ title }) => title.toLowerCase().indexOf(value.toLowerCase()) === 0
   );
 
   return (
