@@ -5,11 +5,24 @@ import { optionListSeeds } from "./seeds";
 
 const Store = ({ children }) => {
   const [value, setValue] = useState("");
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleChange = (value) => {
+    setValue(value);
+    setSelectedOption(null);
+  };
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    setValue(option.title);
+  };
 
   return cloneElement(children, {
     value,
+    selectedOption,
     getValue: (e) => e.target.value,
-    onChange: setValue,
+    onChange: handleChange,
+    onOptionSelect: handleOptionSelect,
   });
 };
 
