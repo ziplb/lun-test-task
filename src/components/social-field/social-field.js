@@ -31,6 +31,7 @@ const SocialField = ({
   name,
   value,
   error,
+  isFocusOnMount,
   onChange,
   onFieldValueSet,
 }) => {
@@ -50,6 +51,7 @@ const SocialField = ({
               label={label}
               name={name}
               value={checkIsShowed(value)}
+              isFocusOnMount={isFocusOnMount}
               onChange={handleCheckboxChange}
             />
           </div>
@@ -63,6 +65,7 @@ const SocialField = ({
                 isError={error}
                 onChange={onChange}
                 isSmall={!isMobile}
+                isFocusOnMount
               />
             </div>
           )}

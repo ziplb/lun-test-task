@@ -16,13 +16,14 @@ const SocialsQuestionnaireStep = () => {
 
   return (
     <QuesitonnaireStep step={socialsStep} onSubmit={onSubmit}>
-      {socialList.map(({ slug, title }) => (
+      {socialList.map(({ slug, title }, index) => (
         <Form.Row key={slug}>
           <SocialField
             label={title}
             name={slug}
             value={values[slug]}
             error={getFormikError(slug, errors, touched)}
+            isFocusOnMount={index === 0}
             onChange={onChange}
             onFieldValueSet={onFieldValueSet}
           />
