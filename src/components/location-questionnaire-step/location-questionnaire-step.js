@@ -9,7 +9,7 @@ import { getFormikError } from "../../utils";
 import { locationStep } from "../../data";
 import useLocationData from "./use-location-data";
 
-const FavoriteAnimalQuesitonnaireStep = () => {
+const LocationQuesitonnaireStep = () => {
   const [
     {
       values,
@@ -59,4 +59,4 @@ const FavoriteAnimalQuesitonnaireStep = () => {
   );
 };
 
-export default FavoriteAnimalQuesitonnaireStep;
+export default LocationQuesitonnaireStep;
