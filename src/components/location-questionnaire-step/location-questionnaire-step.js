@@ -50,6 +50,11 @@ const FavoriteAnimalQuesitonnaireStep = () => {
     onChange(e);
   };
 
+  const handleCityChange = (e) => {
+    onCitySelect(null);
+    onChange(e);
+  };
+
   return (
     <QuestionnaireStep step={locationStep} onSubmit={onSubmit}>
       <Form.Row>
@@ -75,7 +80,7 @@ const FavoriteAnimalQuesitonnaireStep = () => {
             placeholder="Город"
             value={values.cityQuery}
             optionList={cityOptionList}
-            onChange={handleCountryChange}
+            onChange={handleCityChange}
             onOptionSelect={(city) => onCitySelect(denormalizeCity(city))}
           />
         </Field>
