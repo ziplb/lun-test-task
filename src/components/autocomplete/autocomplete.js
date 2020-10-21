@@ -1,5 +1,4 @@
 import React, { useState, useLayoutEffect } from "react";
-import { Scrollbars } from "react-custom-scrollbars";
 import computeScrollIntoView from "compute-scroll-into-view";
 
 import Input from "../input/input";
