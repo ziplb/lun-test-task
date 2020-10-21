@@ -90,6 +90,7 @@ const Autocomplete = ({
   const handleInputChange = (e) => {
     onChange(e);
     setIsFiltered(true);
+    setHighlightedOptionIndex(-1);
   };
 
   const goToNextOption = () => {
