@@ -5,9 +5,7 @@ import { submitLocationStep } from "../../store";
 import { useStepNavigation, useDataFromRedux } from "../../hooks";
 
 const validationSchema = object().shape({
-  favoriteAnimal: object()
-    .nullable(true)
-    .required("Выберите своего любимого котика"),
+  country: object().nullable(true).required("Выберите страну"),
 });
 
 const useLocationData = () => {
@@ -34,11 +32,19 @@ const useLocationData = () => {
     },
   });
 
+  const handleCountrySelect = (country) => {
+    setFieldValue("country", country);
+
+    if (country?.title) {
+      setFieldValue("countryQuery", country.title);
+    }
+  };
+
   return [
     { values, touched, errors },
     {
       onSubmit: handleSubmit,
-      onFieldValueSet: setFieldValue,
+      onCoutrySelect: handleCountrySelect,
       onChange: handleChange,
     },
   ];
