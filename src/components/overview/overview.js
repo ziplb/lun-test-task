@@ -5,19 +5,29 @@ import { Helmet } from "react-helmet";
 import OverviewCard from "../overview-card/overview-card";
 import Button from "../button/button";
 
-import { restart } from "../../store";
-import { getQuestionnaireFirstStepLink } from "../../routes";
 import {
-  useRedirectToQuestionnaireIfItNotFinished,
-  useDataFromRedux,
-} from "../../hooks";
+  restart,
+  useFullName,
+  useEmail,
+  useSocialList,
+  useFavoriteAnimal,
+  useCity,
+  useCountry,
+} from "../../store";
+import { getQuestionnaireFirstStepLink } from "../../routes";
+import { useRedirectToQuestionnaireIfItNotFinished } from "../../hooks";
 import { shuffleArray } from "../../utils";
 import { animalList } from "../../data";
 
 import "./overview.css";
 
 const Overview = () => {
-  const [{ fullName, email, socialList, favoriteAnimal }] = useDataFromRedux();
+  const fullName = useFullName();
+  const email = useEmail();
+  const country = useCountry();
+  const city = useCity();
+  const socialList = useSocialList();
+  const favoriteAnimal = useFavoriteAnimal();
   const { push } = useHistory();
   useRedirectToQuestionnaireIfItNotFinished();
 
@@ -37,8 +47,8 @@ const Overview = () => {
         <OverviewCard
           fullName={fullName}
           email={email}
-          city="Kiev"
-          country="Ukraine"
+          city={city?.title}
+          country={country?.title}
           socialList={socialList.filter(({ value }) => value)}
           image={favoriteAnimal?.image || {}}
         />

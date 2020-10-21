@@ -1,8 +1,8 @@
 import { useFormik } from "formik";
 import { object, string, addMethod as addYupMethod } from "yup";
 
-import { submitSocialsStep } from "../../store";
-import { useStepNavigation, useDataFromRedux } from "../../hooks";
+import { submitSocialsStep, useSocialList } from "../../store";
+import { useStepNavigation } from "../../hooks";
 
 addYupMethod(string, "requiredIfNotNull", function (message) {
   return this.test("defined", message, (value) => value || value === null);
@@ -22,7 +22,7 @@ const formValidationSchema = (socialList) =>
   );
 
 const useSocialsData = () => {
-  const [{ socialList }] = useDataFromRedux();
+  const socialList = useSocialList();
   // eslint-disable-next-line no-empty-pattern
   const [{}, { goToNextStep }] = useStepNavigation();
 

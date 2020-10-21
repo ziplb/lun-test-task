@@ -1,5 +1,5 @@
-import { createStore } from "redux";
-import { bindActionCreators } from "redux";
+import { createStore, bindActionCreators } from "redux";
+import { useSelector } from "react-redux";
 
 import {
   personalStep,
@@ -113,6 +113,17 @@ const reducer = (state = initialState, { type, payload }) => {
       return state;
   }
 };
+
+// Selectors
+export const useFullName = () => useSelector((state) => state.fullName);
+export const useEmail = () => useSelector((state) => state.email);
+export const useCountry = () => useSelector((state) => state.country);
+export const useCity = () => useSelector((state) => state.city);
+export const useSocialList = () => useSelector((state) => state.socialList);
+export const useFavoriteAnimal = () =>
+  useSelector((state) => state.favoriteAnimal);
+export const useFilledStepSlugList = () =>
+  useSelector((state) => state.filledStepSlugList);
 
 const store = createStore(reducer);
 

@@ -3,10 +3,10 @@ import { useHistory } from "react-router-dom";
 
 import { stepSlugInOrderList } from "../data";
 import { getQuestionnaireLink } from "../routes";
-import { useDataFromRedux } from "../hooks";
+import { useFilledStepSlugList } from "../store";
 
 const useRedirectToQuestionnaireIfItNotFinished = () => {
-  const [{ filledStepSlugList }] = useDataFromRedux();
+  const filledStepSlugList = useFilledStepSlugList();
   const { replace } = useHistory();
 
   const isFinished = stepSlugInOrderList.length === filledStepSlugList.length;

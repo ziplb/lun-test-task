@@ -2,8 +2,9 @@ import { useFormik } from "formik";
 import { object } from "yup";
 
 import { submitLocationStep } from "../../store";
-import { useStepNavigation, useDataFromRedux } from "../../hooks";
+import { useStepNavigation } from "../../hooks";
 import { countryList, cityList } from "../../data";
+import { useCity, useCountry } from "../../store";
 import {
   normalizeCountry,
   denormalizeCountry,
@@ -19,7 +20,8 @@ const validationSchema = object().shape({
 });
 
 const useLocationData = () => {
-  const [{ country, city }] = useDataFromRedux();
+  const city = useCity();
+  const country = useCountry();
   // eslint-disable-next-line no-empty-pattern
   const [{}, { goToNextStep }] = useStepNavigation();
 

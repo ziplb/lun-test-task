@@ -3,7 +3,8 @@ import { object, addMethod as addYupMethod } from "yup";
 
 import { submitFavoriteAnimalStep } from "../../store";
 import { animalKinds } from "../../data";
-import { useStepNavigation, useDataFromRedux } from "../../hooks";
+import { useStepNavigation } from "../../hooks";
+import { useFavoriteAnimal } from "../../store";
 
 addYupMethod(object, "isCat", function (message) {
   return this.test(
@@ -21,7 +22,7 @@ const validationSchema = object().shape({
 });
 
 const useFavoriteAnimalData = () => {
-  const [{ favoriteAnimal }] = useDataFromRedux();
+  const favoriteAnimal = useFavoriteAnimal();
   // eslint-disable-next-line no-empty-pattern
   const [{}, { goToNextStep }] = useStepNavigation();
 
