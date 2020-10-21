@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/lun-test-task/static/css/main.7d52f7eb.chunk.css",
+    "main.js": "/lun-test-task/static/js/main.860faff4.chunk.js",
+    "main.js.map": "/lun-test-task/static/js/main.860faff4.chunk.js.map",
+    "runtime-main.js": "/lun-test-task/static/js/runtime-main.7f259aa5.js",
+    "runtime-main.js.map": "/lun-test-task/static/js/runtime-main.7f259aa5.js.map",
+    "static/js/2.257baa3e.chunk.js": "/lun-test-task/static/js/2.257baa3e.chunk.js",
+    "static/js/2.257baa3e.chunk.js.map": "/lun-test-task/static/js/2.257baa3e.chunk.js.map",
+    "index.html": "/lun-test-task/index.html",
+    "precache-manifest.44df2a8615b1d8967964c5ccb1827b70.js": "/lun-test-task/precache-manifest.44df2a8615b1d8967964c5ccb1827b70.js",
+    "service-worker.js": "/lun-test-task/service-worker.js",
+    "static/css/main.7d52f7eb.chunk.css.map": "/lun-test-task/static/css/main.7d52f7eb.chunk.css.map",
+    "static/js/2.257baa3e.chunk.js.LICENSE.txt": "/lun-test-task/static/js/2.257baa3e.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/lun-test-task/static/media/OpenSans-SemiBold.fe241c6c.woff",
+    "static/media/cat1.jpg": "/lun-test-task/static/media/cat1.1d99a4e8.jpg",
+    "static/media/cat1@2x.jpg": "/lun-test-task/static/media/cat1@2x.11901c73.jpg",
+    "static/media/cat2@2x.jpg": "/lun-test-task/static/media/cat2@2x.cbb1d81e.jpg",
+    "static/media/cat3@2x.jpg": "/lun-test-task/static/media/cat3@2x.7d6492e3.jpg",
+    "static/media/dog4@2x.jpg": "/lun-test-task/static/media/dog4@2x.ca94f85d.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7f259aa5.js",
+    "static/js/2.257baa3e.chunk.js",
+    "static/css/main.7d52f7eb.chunk.css",
+    "static/js/main.860faff4.chunk.js"
+  ]
+}
