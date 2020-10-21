@@ -1,8 +1,7 @@
 import { useState, useLayoutEffect } from "react";
 import computeScrollIntoView from "compute-scroll-into-view";
 
-const useScrollingIntoView = () => {
-  const [optionListEl, setOptionListEl] = useState(null);
+const useScrollingIntoView = (optionListEl) => {
   const [selectedOptionEl, setSelectedOptionEl] = useState(null);
 
   useLayoutEffect(() => {
@@ -22,8 +21,8 @@ const useScrollingIntoView = () => {
   }, [optionListEl, selectedOptionEl]);
 
   return {
-    optionListRef: setOptionListEl,
     selectedOptionRef: setSelectedOptionEl,
+    selectedOptionEl,
   };
 };
 

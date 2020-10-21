@@ -1,9 +1,9 @@
 import React, { useState, useLayoutEffect } from "react";
+import computeScrollIntoView from "compute-scroll-into-view";
 
 import Input from "../input/input";
 import AutocompleteOption from "../autocomplete-option/autocomplete-option";
 
-import useScrollingIntoView from "./use-scrolling-into-view";
 import "./autocomplete.css";
 
 const KEY_CODES = {
@@ -24,10 +24,43 @@ const Autocomplete = ({
   onOptionSelect,
   ...rest
 }) => {
+  const [optionListEl, setOptionListEl] = useState(null);
+  const [selectedOptionEl, setSelectedOptionEl] = useState(null);
+  const [highlightedOptionEl, setHighlightedOptionEl] = useState(null);
+  const [highlightedOptionIndex, setHighlightedOptionIndex] = useState(-1);
+
+  useLayoutEffect(() => {
+    setHighlightedOptionEl(selectedOptionEl);
+  }, [selectedOptionEl]);
+
+  useLayoutEffect(() => {
+    if (!highlightedOptionEl || !highlightedOptionEl) {
+      return;
+    }
+
+    const actions = computeScrollIntoView(highlightedOptionEl, {
+      boundary: optionListEl,
+      block: "nearest",
+    });
+
+    actions.forEach(({ el, top, left }) => {
+      el.scrollTop = top;
+      el.scrollLeft = left;
+    });
+  }, [optionListEl, highlightedOptionEl]);
+
+  const getRef = (isSelected, isHighlighted) => {
+    if (!isSelected && !isHighlighted) {
+      return null;
+    }
+
+    return isSelected ? setSelectedOptionEl : setHighlightedOptionEl;
+  };
+
+  //
+
   const [isOptionsShowed, setIsOptionsShowed] = useState(false);
   const [isFiltered, setIsFiltered] = useState(false);
-  const { optionListRef, selectedOptionRef } = useScrollingIntoView();
-  const [highlightedOptionIndex, setHighlightedOptionIndex] = useState(-1);
 
   const filteredOptionList = filterOptionList(optionList, value);
   const resultOptionList = isFiltered ? filteredOptionList : optionList;
@@ -67,14 +100,47 @@ const Autocomplete = ({
     setHighlightedOptionIndex(nextOptionIndex);
   };
 
+  const goToPrevOption = () => {
+    const nextOptionIndex =
+      highlightedOptionIndex === 0
+        ? resultOptionList.length - 1
+        : highlightedOptionIndex - 1;
+
+    setHighlightedOptionIndex(nextOptionIndex);
+  };
+
+  const handleKeyDown = () => {
+    if (!isOptionsShowed) {
+      setIsOptionsShowed(true);
+      return;
+    }
+
+    goToNextOption();
+  };
+
+  const handleKeyUp = () => {
+    if (!isOptionsShowed) {
+      setIsOptionsShowed(true);
+      return;
+    }
+
+    goToPrevOption();
+  };
+
   const handleInputKeyDown = (e) => {
     const { keyCode } = e;
     const { UP, DOWN } = KEY_CODES;
 
     if (keyCode === DOWN) {
       e.preventDefault();
-      setIsOptionsShowed(true);
-      goToNextOption();
+      handleKeyDown();
+      return;
+    }
+
+    if (keyCode === UP) {
+      e.preventDefault();
+      handleKeyUp();
+      return;
     }
   };
 
@@ -98,20 +164,22 @@ const Autocomplete = ({
       </div>
 
       {isOptionsShowed && (
-        <div className="Autocomplete-optionList" ref={optionListRef}>
+        <div className="Autocomplete-optionList" ref={setOptionListEl}>
           {resultOptionList.map((option, index) => {
             const isSelected = selectedOption?.value === option.value;
+            const isHighlighted = highlightedOptionIndex === index;
+            const ref = getRef(isSelected, isHighlighted);
 
             return (
               <div
                 key={option.value}
                 className="Autocomplete-optionItem"
-                ref={isSelected ? selectedOptionRef : null}
+                ref={ref}
               >
                 <AutocompleteOption
                   option={option}
                   isSelected={isSelected}
-                  isHighlighted={highlightedOptionIndex === index}
+                  isHighlighted={isHighlighted}
                   onClick={handleOptionSelect}
                 />
               </div>
