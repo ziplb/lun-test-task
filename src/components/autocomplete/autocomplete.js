@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 
 import Input from "../input/input";
 import AutocompleteOption from "../autocomplete-option/autocomplete-option";
@@ -27,14 +27,21 @@ const Autocomplete = ({
   const [isOptionsShowed, setIsOptionsShowed] = useState(false);
   const [isFiltered, setIsFiltered] = useState(false);
   const { optionListRef, selectedOptionRef } = useScrollingIntoView();
-  const [highlightedOption, setHighlightedOption] = useState(null);
+  const [highlightedOptionIndex, setHighlightedOptionIndex] = useState(-1);
 
   const filteredOptionList = filterOptionList(optionList, value);
   const resultOptionList = isFiltered ? filteredOptionList : optionList;
 
-  useEffect(() => {
-    setHighlightedOption(selectedOption);
-  }, [selectedOption]);
+  useLayoutEffect(() => {
+    if (!selectedOption) {
+      return;
+    }
+
+    const optionIndex = resultOptionList.findIndex(
+      ({ value }) => value === selectedOption.value
+    );
+    setHighlightedOptionIndex(optionIndex);
+  }, [resultOptionList, selectedOption]);
 
   const handleInpuClick = () => {
     setIsOptionsShowed(true);
@@ -51,12 +58,23 @@ const Autocomplete = ({
     setIsFiltered(true);
   };
 
+  const goToNextOption = () => {
+    const nextOptionIndex =
+      highlightedOptionIndex === resultOptionList.length - 1
+        ? 0
+        : highlightedOptionIndex + 1;
+
+    setHighlightedOptionIndex(nextOptionIndex);
+  };
+
   const handleInputKeyDown = (e) => {
     const { keyCode } = e;
     const { UP, DOWN } = KEY_CODES;
 
-    if (keyCode === UP || keyCode === DOWN) {
+    if (keyCode === DOWN) {
+      e.preventDefault();
       setIsOptionsShowed(true);
+      goToNextOption();
     }
   };
 
@@ -81,7 +99,7 @@ const Autocomplete = ({
 
       {isOptionsShowed && (
         <div className="Autocomplete-optionList" ref={optionListRef}>
-          {resultOptionList.map((option) => {
+          {resultOptionList.map((option, index) => {
             const isSelected = selectedOption?.value === option.value;
 
             return (
@@ -93,7 +111,7 @@ const Autocomplete = ({
                 <AutocompleteOption
                   option={option}
                   isSelected={isSelected}
-                  isHighlighted={highlightedOption?.value === option.value}
+                  isHighlighted={highlightedOptionIndex === index}
                   onClick={handleOptionSelect}
                 />
               </div>
