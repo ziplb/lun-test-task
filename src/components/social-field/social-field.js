@@ -1,11 +1,11 @@
 import React from "react";
-import Media from "react-media";
 
 import Checkbox from "../checkbox/checkbox";
 import Input from "../input/input";
 import Field from "../field/field";
 
 import { socialFacebook, socialVk, socialTwitter, socialOk } from "../../data";
+import { useMedia } from "../../hooks";
 
 import "./social-field.css";
 
@@ -39,6 +39,8 @@ const SocialField = ({
     onFieldValueSet(name, checked ? "" : null);
   };
 
+  const isMobile = useMedia("(max-width: 640px)");
+
   return (
     <div className="SocialField">
       <Field hint={error} isError={error}>
@@ -54,18 +56,14 @@ const SocialField = ({
 
           {checkIsShowed(value) && (
             <div className="SocialField-field">
-              <Media query="(max-width: 640px)">
-                {(isMobile) => (
-                  <Input
-                    name={name}
-                    placeholder={getPlaceholder(name)}
-                    value={value}
-                    isError={error}
-                    onChange={onChange}
-                    isSmall={!isMobile}
-                  />
-                )}
-              </Media>
+              <Input
+                name={name}
+                placeholder={getPlaceholder(name)}
+                value={value}
+                isError={error}
+                onChange={onChange}
+                isSmall={!isMobile}
+              />
             </div>
           )}
         </div>

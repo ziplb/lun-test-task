@@ -1,9 +1,11 @@
 import React, { useState, useLayoutEffect } from "react";
+import { Scrollbars } from "react-custom-scrollbars";
 import computeScrollIntoView from "compute-scroll-into-view";
 
 import Input from "../input/input";
 import AutocompleteOption from "../autocomplete-option/autocomplete-option";
 import { IconFilledAngleArrowDown, IconFilledAngleArrowUp } from "../icons";
+import AutocompleteScrollbar from "./scrollbar";
 
 import "./autocomplete.css";
 
@@ -206,26 +208,28 @@ const Autocomplete = ({
 
       {isOptionsShowed && (
         <div className="Autocomplete-optionList" ref={setOptionListEl}>
-          {resultOptionList.map((option, index) => {
-            const isSelected = selectedOption?.value === option.value;
-            const isHighlighted = highlightedOptionIndex === index;
-            const ref = getRef(isSelected, isHighlighted);
+          <AutocompleteScrollbar>
+            {resultOptionList.map((option, index) => {
+              const isSelected = selectedOption?.value === option.value;
+              const isHighlighted = highlightedOptionIndex === index;
+              const ref = getRef(isSelected, isHighlighted);
 
-            return (
-              <div
-                key={option.value}
-                className="Autocomplete-optionItem"
-                ref={ref}
-              >
-                <AutocompleteOption
-                  option={option}
-                  isSelected={isSelected}
-                  isHighlighted={isHighlighted}
-                  onClick={handleOptionSelect}
-                />
-              </div>
-            );
-          })}
+              return (
+                <div
+                  key={option.value}
+                  className="Autocomplete-optionItem"
+                  ref={ref}
+                >
+                  <AutocompleteOption
+                    option={option}
+                    isSelected={isSelected}
+                    isHighlighted={isHighlighted}
+                    onClick={handleOptionSelect}
+                  />
+                </div>
+              );
+            })}
+          </AutocompleteScrollbar>
         </div>
       )}
     </div>
