@@ -42,6 +42,12 @@
   box-shadow: 0 1px 12px var(--color-orange);
 }
 
+@media (max-width: 840px) {
+  .AnimalRadio-el:focus + .AnimalRadio-image {
+    box-shadow: none;
+  }
+}
+
 .AnimalRadio-el:checked.AnimalRadio-el:focus + .AnimalRadio-image {
   box-shadow: none;
 }
