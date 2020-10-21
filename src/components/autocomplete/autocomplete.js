@@ -20,7 +20,7 @@ const filterOptionList = (list, value) =>
 
 const Autocomplete = ({
   value,
-  optionList,
+  optionList = [],
   selectedOption,
   onChange,
   onOptionSelect,
