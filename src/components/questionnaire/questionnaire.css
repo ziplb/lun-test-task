@@ -11,8 +11,14 @@
 }
 
 .Questionnaire-progress {
-  width: var(--questionnaire-container-width);
+  width: 400px;
   margin-bottom: 16px;
+}
+
+@media (max-width: 640px) {
+  .Questionnaire-progress {
+    width: auto;
+  }
 }
 
 .Questionnaire-stepsScene {

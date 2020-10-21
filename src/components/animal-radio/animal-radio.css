@@ -29,17 +29,17 @@
 }
 
 .AnimalRadio-image:hover {
-  box-shadow: var(--shadow-large);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
 }
 
 .AnimalRadio-el:checked + .AnimalRadio-image {
-  border: 2px solid var(--color-orange);
+  border: 2px solid #ff9800;
   margin: 0;
   pointer-events: none;
 }
 
 .AnimalRadio-el:focus + .AnimalRadio-image {
-  box-shadow: 0 1px 12px var(--color-orange);
+  box-shadow: 0 1px 12px #ff9800;
 }
 
 @media (max-width: 840px) {

@@ -14,12 +14,18 @@
 }
 
 .QuestionnaireStep-title {
-  width: var(--questionnaire-container-width);
+  width: 400px;
   margin: 0;
   margin-bottom: 32px;
   line-height: 1.2;
   font-size: inherit;
   font-weight: 400;
+}
+
+@media (max-width: 640px) {
+  .QuestionnaireStep-title {
+    width: auto;
+  }
 }
 
 .QuestionnaireStep-form {
@@ -35,8 +41,14 @@
 }
 
 .QuestionnaireStep-content {
-  width: var(--questionnaire-container-width);
+  width: 400px;
   min-height: 240px;
+}
+
+@media (max-width: 640px) {
+  .QuestionnaireStep-content {
+    width: auto;
+  }
 }
 
 .QuestionnaireStep--wide .QuestionnaireStep-content {
@@ -52,8 +64,14 @@
 .QuestionnaireStep-navigationGroup {
   display: flex;
   justify-content: space-between;
-  width: var(--questionnaire-container-width);
+  width: 400px;
   margin-top: 16px;
+}
+
+@media (max-width: 640px) {
+  .QuestionnaireStep-navigationGroup {
+    width: auto;
+  }
 }
 
 .QuestionnaireStep-navigationItem {

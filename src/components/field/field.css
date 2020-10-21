@@ -30,7 +30,7 @@
 }
 
 .Field--error .Field-hint {
-  color: var(--color-red);
+  color: #ff0000;
 }
 
 .Field-hintSeparator {

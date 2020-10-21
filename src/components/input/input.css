@@ -8,10 +8,10 @@
   line-height: 38px;
   padding: 0 12px;
   box-sizing: border-box;
-  border: 1px solid var(--color-white);
+  border: 1px solid #fff;
   border-radius: 2px;
-  box-shadow: var(--shadow);
-  background-color: var(--color-white);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
   font: inherit;
   appearance: none;
   outline: none;
@@ -19,11 +19,11 @@
 }
 
 .Input-el::placeholder {
-  color: var(--color-light-grey);
+  color: #bbb;
 }
 
 .Input-el--error {
-  border: 1px solid var(--color-red);
+  border: 1px solid #ff0000;
 }
 
 .Input-el--small {
@@ -40,5 +40,5 @@
   right: 8px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--color-light-grey);
+  color: #bbb;
 }

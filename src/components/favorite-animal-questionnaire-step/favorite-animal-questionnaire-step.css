@@ -37,5 +37,5 @@
 }
 
 .FavoriteAnimalQuesitonnaireStep-error {
-  color: var(--color-red);
+  color: #ff0000;
 }
