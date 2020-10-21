@@ -3,6 +3,9 @@ import secondCatImage from "./assets/images/cat2.jpg";
 import thirdCatImage from "./assets/images/cat3.jpg";
 import dogImage from "./assets/images/dog4.jpg";
 
+import countries from "./assets/documents/countries.json";
+import cities from "./assets/documents/cities.json";
+
 export const personalStep = { slug: "personal", title: "Введитя имя и e-mail" };
 
 export const locationStep = {
@@ -67,3 +70,16 @@ export const socialList = [
   { slug: "twitter", title: "Twitter" },
   { slug: "ok", title: "Одноклассники" },
 ];
+
+export const countriesList = Object.entries(countries).map(([slug, title]) => ({
+  slug,
+  title,
+}));
+
+export const cityList = Object.entries(cities).map(
+  ([slug, { country, name }]) => ({
+    slug,
+    title: name,
+    countrySlug: country,
+  })
+);
