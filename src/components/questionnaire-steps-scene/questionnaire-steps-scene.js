@@ -46,18 +46,18 @@ const RoutesByStepSlugs = {
 
 const QuestionnaireStepsScene = () => {
   // eslint-disable-next-line no-empty-pattern
-  const [{}, { checkIsStepFilled }] = useStepNavigation();
+  const [{}, { checkIsStepFinished }] = useStepNavigation();
 
   return (
     <Switch>
       {stepSlugInOrderList.map((slug, index) => {
         const { path, component } = RoutesByStepSlugs[slug];
         const isFirstStep = index === 0;
-        const isPrevStepFilled = checkIsStepFilled(
+        const isPrevStepFinished = checkIsStepFinished(
           stepSlugInOrderList[index - 1]
         );
 
-        if (!isFirstStep && !isPrevStepFilled) {
+        if (!isFirstStep && !isPrevStepFinished) {
           return null;
         }
 

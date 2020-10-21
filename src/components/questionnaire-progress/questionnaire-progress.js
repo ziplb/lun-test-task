@@ -11,7 +11,7 @@ import "./questionnaire-progress.css";
 
 const QuestionnaireProgress = () => {
   // eslint-disable-next-line no-empty-pattern
-  const [{}, { checkIsFirstStep, checkIsStepFilled }] = useStepNavigation();
+  const [{}, { checkIsFirstStep, checkIsStepFinished }] = useStepNavigation();
 
   const checkIsDisabled = (slug) => {
     if (checkIsFirstStep(slug)) {
@@ -19,7 +19,7 @@ const QuestionnaireProgress = () => {
     }
 
     const prevSlugIndex = stepSlugInOrderList.indexOf(slug) - 1;
-    return !checkIsStepFilled(stepSlugInOrderList[prevSlugIndex]);
+    return !checkIsStepFinished(stepSlugInOrderList[prevSlugIndex]);
   };
 
   return (

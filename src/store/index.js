@@ -43,7 +43,7 @@ const initialState = {
   city: null,
   socialList: socialList.map((social) => ({ ...social, value: null })),
   favoriteAnimal: null,
-  filledStepSlugList: [],
+  finishedStepSlugList: [],
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -55,8 +55,8 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         fullName,
         email,
-        filledStepSlugList: filterDuplicate([
-          ...state.filledStepSlugList,
+        finishedStepSlugList: filterDuplicate([
+          ...state.finishedStepSlugList,
           personalStep.slug,
         ]),
       };
@@ -69,8 +69,8 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         city,
         country,
-        filledStepSlugList: filterDuplicate([
-          ...state.filledStepSlugList,
+        finishedStepSlugList: filterDuplicate([
+          ...state.finishedStepSlugList,
           locationStep.slug,
         ]),
       };
@@ -85,8 +85,8 @@ const reducer = (state = initialState, { type, payload }) => {
           ...social,
           value: socials[social.slug],
         })),
-        filledStepSlugList: filterDuplicate([
-          ...state.filledStepSlugList,
+        finishedStepSlugList: filterDuplicate([
+          ...state.finishedStepSlugList,
           socialsStep.slug,
         ]),
       };
@@ -98,8 +98,8 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         favoriteAnimal,
-        filledStepSlugList: filterDuplicate([
-          ...state.filledStepSlugList,
+        finishedStepSlugList: filterDuplicate([
+          ...state.finishedStepSlugList,
           favoriteAnimalStep.slug,
         ]),
       };
@@ -122,8 +122,8 @@ export const useCity = () => useSelector((state) => state.city);
 export const useSocialList = () => useSelector((state) => state.socialList);
 export const useFavoriteAnimal = () =>
   useSelector((state) => state.favoriteAnimal);
-export const useFilledStepSlugList = () =>
-  useSelector((state) => state.filledStepSlugList);
+export const useFinishedStepSlugList = () =>
+  useSelector((state) => state.finishedStepSlugList);
 
 const store = createStore(reducer);
 
