@@ -16,6 +16,14 @@ const FavoriteAnimalQuesitonnaireStep = () => {
 
   const error = getFormikError("favoriteAnimal", errors, touched);
 
+  const checkIsFocusOnMount = (animal, index) => {
+    if (!values.favoriteAnimal && index === 0) {
+      return true;
+    }
+
+    return values.favoriteAnimal?.slug === animal.slug;
+  };
+
   return (
     <div className="FavoriteAnimalQuesitonnaireStep">
       <QuestionnaireStep step={favoriteAnimalStep} onSubmit={onSubmit} isWide>
@@ -31,7 +39,7 @@ const FavoriteAnimalQuesitonnaireStep = () => {
                   image={animal.image}
                   value={animal.slug}
                   checked={values.favoriteAnimal?.slug === animal.slug}
-                  isFocusOnMount={index === 0}
+                  isFocusOnMount={checkIsFocusOnMount(animal, index)}
                   onChange={() => onFieldValueSet("favoriteAnimal", animal)}
                 />
               </div>
