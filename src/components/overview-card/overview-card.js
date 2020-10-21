@@ -30,7 +30,12 @@ const OverviewCard = ({
             <div className="OverviewCard-social">
               <span className="OverviewCard-socialTitle">{title}:</span>
 
-              <a href={value} className="OverviewCard-socialLink">
+              <a
+                href={value}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="OverviewCard-socialLink"
+              >
                 {value}
               </a>
             </div>
