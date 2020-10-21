@@ -60,8 +60,6 @@ const Autocomplete = ({
     return isSelected ? setSelectedOptionEl : setHighlightedOptionEl;
   };
 
-  //
-
   const [isFiltered, setIsFiltered] = useState(false);
 
   const filteredOptionList = filterOptionList(optionList, value);
@@ -135,7 +133,7 @@ const Autocomplete = ({
       onOptionSelect(resultOptionList[highlightedOptionIndex]);
     }
 
-    setIsOptionsShowed(!isOptionsShowed);
+    setIsOptionsShowed(false);
     setIsFiltered(false);
   };
 
@@ -157,11 +155,13 @@ const Autocomplete = ({
     }
 
     if (keyCode === ENTER) {
+      e.preventDefault();
       handleEnter();
       return;
     }
 
     if (keyCode === ESCAPE) {
+      e.preventDefault();
       setIsOptionsShowed(false);
     }
   };
