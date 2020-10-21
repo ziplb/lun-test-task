@@ -11,7 +11,7 @@ const OverviewCard = ({
   city,
   country,
   socialList,
-  image,
+  image = {},
 }) => (
   <div className="OverviewCard">
     <div className="OverviewCard-contentCol">

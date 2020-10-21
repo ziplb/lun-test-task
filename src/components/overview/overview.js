@@ -15,21 +15,24 @@ import {
   useCountry,
 } from "../../store";
 import { getQuestionnaireFirstStepLink } from "../../routes";
-import { useRedirectToQuestionnaireIfItNotFinished } from "../../hooks";
 import { shuffleArray } from "../../utils";
 import { animalList } from "../../data";
+import useRedirectToQuestionnaireIfItNotFinished from "./use-redirect-to-questionnaire-if-it-not-finished";
 
 import "./overview.css";
 
+const filterEmptySocials = ({ value }) => value;
+
 const Overview = () => {
+  const { push } = useHistory();
+  useRedirectToQuestionnaireIfItNotFinished();
+
   const fullName = useFullName();
   const email = useEmail();
   const country = useCountry();
   const city = useCity();
   const socialList = useSocialList();
   const favoriteAnimal = useFavoriteAnimal();
-  const { push } = useHistory();
-  useRedirectToQuestionnaireIfItNotFinished();
 
   const handleClick = () => {
     restart();
@@ -49,8 +52,8 @@ const Overview = () => {
           email={email}
           city={city?.title}
           country={country?.title}
-          socialList={socialList.filter(({ value }) => value)}
-          image={favoriteAnimal?.image || {}}
+          socialList={socialList.filter(filterEmptySocials)}
+          image={favoriteAnimal?.image}
         />
       </div>
 

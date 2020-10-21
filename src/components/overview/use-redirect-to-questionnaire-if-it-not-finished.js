@@ -1,9 +1,9 @@
 import { useLayoutEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import { stepSlugInOrderList } from "../data";
-import { getQuestionnaireLink } from "../routes";
-import { useFilledStepSlugList } from "../store";
+import { stepSlugInOrderList } from "../../data";
+import { getQuestionnaireLink } from "../../routes";
+import { useFilledStepSlugList } from "../../store";
 
 const useRedirectToQuestionnaireIfItNotFinished = () => {
   const filledStepSlugList = useFilledStepSlugList();
