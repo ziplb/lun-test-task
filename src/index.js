@@ -15,7 +15,7 @@ shuffleArray(animalList);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
+      <Router basename="/lun-test-task">
         <App />
       </Router>
     </Provider>
