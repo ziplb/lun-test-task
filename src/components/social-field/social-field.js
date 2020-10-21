@@ -5,9 +5,26 @@ import Checkbox from "../checkbox/checkbox";
 import Input from "../input/input";
 import Field from "../field/field";
 
+import { socialFacebook, socialVk, socialTwitter, socialOk } from "../../data";
+
 import "./social-field.css";
 
 const checkIsShowed = (value) => value !== null;
+
+const getPlaceholder = (name) => {
+  switch (name) {
+    case socialFacebook.slug:
+      return `Вы в Facebook`;
+    case socialVk.slug:
+      return `Вы во Вконтакте`;
+    case socialTwitter.slug:
+      return `Вы в Twitter`;
+    case socialOk.slug:
+      return `Вы в Одноклассниках`;
+    default:
+      return "";
+  }
+};
 
 const SocialField = ({
   label,
@@ -41,7 +58,7 @@ const SocialField = ({
                 {(isMobile) => (
                   <Input
                     name={name}
-                    placeholder={`Ваша страница в ${label}`}
+                    placeholder={getPlaceholder(name)}
                     value={value}
                     isError={error}
                     onChange={onChange}

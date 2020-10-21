@@ -10,6 +10,7 @@ import dogDoubleImage from "./assets/images/dog4@2x.jpg";
 import countries from "./assets/documents/countries.json";
 import cities from "./assets/documents/cities.json";
 
+// Steps
 export const personalStep = { slug: "personal", title: "Введитя имя и e-mail" };
 
 export const locationStep = {
@@ -36,6 +37,7 @@ const stepInOrderList = [
 
 export const stepSlugInOrderList = stepInOrderList.map(({ slug }) => slug);
 
+// Animals
 export const animalKinds = {
   cat: "cat",
   dog: "dog",
@@ -76,13 +78,15 @@ export const animalList = [
   },
 ];
 
-export const socialList = [
-  { slug: "facebook", title: "Facebook" },
-  { slug: "vk", title: "Вконтакте" },
-  { slug: "twitter", title: "Twitter" },
-  { slug: "ok", title: "Одноклассники" },
-];
+// Socials
+export const socialFacebook = { slug: "facebook", title: "Facebook" };
+export const socialVk = { slug: "vk", title: "Вконтакте" };
+export const socialTwitter = { slug: "twitter", title: "Twitter" };
+export const socialOk = { slug: "ok", title: "Одноклассники" };
 
+export const socialList = [socialFacebook, socialVk, socialTwitter, socialOk];
+
+// Locations
 export const countryList = Object.entries(countries).map(([slug, title]) => ({
   slug,
   title,
