@@ -176,6 +176,7 @@ const Autocomplete = ({
       <div className="Autocomplete-input">
         <Input
           value={value}
+          autoComplete="off"
           onClick={handleInpuClick}
           onFocus={handleInputFocus}
           onBlur={() => setIsOptionsShowed(false)}
