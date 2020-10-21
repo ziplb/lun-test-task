@@ -31,7 +31,6 @@ const useLocationData = () => {
     handleChange,
     setFieldValue,
     setValues,
-    validateForm,
   } = useFormik({
     initialValues: {
       countryQuery: country?.title,
@@ -67,8 +66,10 @@ const useLocationData = () => {
     const country = denormalizeCountry(normalizedCountry);
     setCountry(country);
     setCountryQuery(country.title);
-    resetCity();
-    validateForm();
+
+    if (values.country?.slug !== country.slug) {
+      resetCity();
+    }
   };
 
   const handleCitySelect = (normalizedCity) => {
