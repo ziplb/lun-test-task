@@ -57,7 +57,11 @@ const useLocationData = () => {
     setFieldValue("countryQuery", countryQuery);
 
   const setCity = (city) => setFieldValue("city", city);
-  const resetCity = () => setCity(null);
+  const setCityQuery = (cityQuery) => setFieldValue("cityQuery", cityQuery);
+  const resetCity = () => {
+    setCity(null);
+    setCityQuery("");
+  };
 
   const handleCountrySelect = (normalizedCountry) => {
     const country = denormalizeCountry(normalizedCountry);
