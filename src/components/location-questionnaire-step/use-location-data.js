@@ -30,6 +30,8 @@ const useLocationData = () => {
     handleSubmit,
     handleChange,
     setFieldValue,
+    setValues,
+    validateForm,
   } = useFormik({
     initialValues: {
       countryQuery: country?.title,
@@ -56,24 +58,25 @@ const useLocationData = () => {
 
   const setCity = (city) => setFieldValue("city", city);
   const resetCity = () => setCity(null);
-  const setCityQuery = (cityQuery) => setFieldValue("cityQuery", cityQuery);
 
   const handleCountrySelect = (normalizedCountry) => {
     const country = denormalizeCountry(normalizedCountry);
     setCountry(country);
     setCountryQuery(country.title);
     resetCity();
+    validateForm();
   };
 
   const handleCitySelect = (normalizedCity) => {
     const city = denormalizeCity(normalizedCity);
-    setCity(city);
-    setCityQuery(city.title);
+    const values = { city, cityQuery: city.title };
 
     if (!values.country) {
-      setCountry(getCountryByCity(countryList, city));
-      setCountryQuery(getCountryByCity(countryList, city)?.title);
+      values.country = getCountryByCity(countryList, city);
+      values.countryQuery = getCountryByCity(countryList, city)?.title;
     }
+
+    setValues(values);
   };
 
   const handleCountryChange = (e) => {
