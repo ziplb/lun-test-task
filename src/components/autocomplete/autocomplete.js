@@ -45,7 +45,7 @@ const Autocomplete = ({
   }, [selectedOptionEl]);
 
   useLayoutEffect(() => {
-    if (!optionListEl || !highlightedOptionEl) {
+    if (!optionListEl || !highlightedOptionEl || noOptions) {
       return;
     }
 
@@ -61,6 +61,7 @@ const Autocomplete = ({
     selectedOptionEl,
     selectedOptionIndex,
     highlightedOptionIndex,
+    noOptions,
   ]);
 
   const getRef = (isSelected, isHighlighted) => {
