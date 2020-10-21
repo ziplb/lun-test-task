@@ -1,8 +1,6 @@
 import computeScrollIntoView from "compute-scroll-into-view";
 
 export const scrollIntoView = (rootEl, el) => {
-  console.log("rootEl: ", rootEl);
-  console.log("el: ", el);
   const actions = computeScrollIntoView(el, {
     boundary: rootEl,
     block: "nearest",
