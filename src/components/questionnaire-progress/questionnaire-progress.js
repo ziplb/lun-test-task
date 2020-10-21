@@ -34,6 +34,7 @@ const QuestionnaireProgress = () => {
               "QuestionnaireProgress-link--disabled": checkIsDisabled(slug),
             })}
             activeClassName="QuestionnaireProgress-link--active"
+            tabIndex={checkIsDisabled(slug) ? -1 : 0}
           >
             {index}
           </NavLink>
