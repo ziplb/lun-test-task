@@ -1,7 +1,11 @@
 import firstCatImage from "./assets/images/cat1.jpg";
+import firstCatDoubleImage from "./assets/images/cat1@2x.jpg";
 import secondCatImage from "./assets/images/cat2.jpg";
+import secondCatDoubleImage from "./assets/images/cat2@2x.jpg";
 import thirdCatImage from "./assets/images/cat3.jpg";
+import thirdCatDoubleImage from "./assets/images/cat3@2x.jpg";
 import dogImage from "./assets/images/dog4.jpg";
+import dogDoubleImage from "./assets/images/dog4@2x.jpg";
 
 import countries from "./assets/documents/countries.json";
 import cities from "./assets/documents/cities.json";
@@ -41,7 +45,11 @@ export const animalList = [
   {
     slug: "first-cat",
     kind: animalKinds.cat,
-    image: { title: "First cat", normal: firstCatImage, double: firstCatImage },
+    image: {
+      title: "First cat",
+      normal: firstCatImage,
+      double: firstCatDoubleImage,
+    },
   },
   {
     slug: "second-cat",
@@ -49,18 +57,22 @@ export const animalList = [
     image: {
       title: "Second cat",
       normal: secondCatImage,
-      double: secondCatImage,
+      double: secondCatDoubleImage,
     },
   },
   {
     slug: "third-cat",
     kind: animalKinds.cat,
-    image: { title: "First cat", normal: thirdCatImage, double: thirdCatImage },
+    image: {
+      title: "First cat",
+      normal: thirdCatImage,
+      double: thirdCatDoubleImage,
+    },
   },
   {
     slug: "dog",
     kind: animalKinds.dog,
-    image: { title: "Dog", normal: dogImage, double: dogImage },
+    image: { title: "Dog", normal: dogImage, double: dogDoubleImage },
   },
 ];
 
