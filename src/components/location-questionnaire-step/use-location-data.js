@@ -6,10 +6,11 @@ import { useStepNavigation, useDataFromRedux } from "../../hooks";
 
 const validationSchema = object().shape({
   country: object().nullable(true).required("Выберите страну"),
+  city: object().nullable(true).required("Выберите город"),
 });
 
 const useLocationData = () => {
-  const [{ country }] = useDataFromRedux();
+  const [{ country, city }] = useDataFromRedux();
   // eslint-disable-next-line no-empty-pattern
   const [{}, { goToNextStep }] = useStepNavigation();
 
@@ -24,6 +25,9 @@ const useLocationData = () => {
     initialValues: {
       countryQuery: country?.title,
       country,
+
+      cityQuery: city?.title,
+      city,
     },
     validationSchema,
     onSubmit: (values) => {
@@ -40,11 +44,20 @@ const useLocationData = () => {
     }
   };
 
+  const handleCitySelect = (city) => {
+    setFieldValue("city", city);
+
+    if (city?.title) {
+      setFieldValue("cityQuery", city.title);
+    }
+  };
+
   return [
     { values, touched, errors },
     {
       onSubmit: handleSubmit,
       onCoutrySelect: handleCountrySelect,
+      onCitySelect: handleCitySelect,
       onChange: handleChange,
     },
   ];

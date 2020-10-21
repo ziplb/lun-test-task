@@ -80,6 +80,6 @@ export const cityList = Object.entries(cities).map(
   ([slug, { country, name }]) => ({
     slug,
     title: name,
-    countrySlug: country,
+    countrySlug: String(country),
   })
 );
