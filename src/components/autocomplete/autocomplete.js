@@ -29,6 +29,14 @@ const Autocomplete = ({
   const [selectedOptionEl, setSelectedOptionEl] = useState(null);
   const [highlightedOptionEl, setHighlightedOptionEl] = useState(null);
   const [highlightedOptionIndex, setHighlightedOptionIndex] = useState(-1);
+  const [isFiltered, setIsFiltered] = useState(false);
+  const [isFirstFocusing, setIsFirstFocusing] = useState(isFocusOnMount);
+
+  const filteredOptionList = filterOptionList(optionList, value);
+  const resultOptionList = isFiltered ? filteredOptionList : optionList;
+  const selectedOptionIndex = resultOptionList.findIndex(
+    ({ value }) => value === selectedOption?.value
+  );
 
   useLayoutEffect(() => {
     setHighlightedOptionEl(selectedOptionEl);
@@ -39,8 +47,19 @@ const Autocomplete = ({
       return;
     }
 
-    scrollIntoView(optionListEl, highlightedOptionEl);
-  }, [optionListEl, highlightedOptionEl]);
+    const el =
+      selectedOptionIndex === highlightedOptionIndex && selectedOptionEl
+        ? selectedOptionEl
+        : highlightedOptionEl;
+
+    scrollIntoView(optionListEl, el);
+  }, [
+    optionListEl,
+    highlightedOptionEl,
+    selectedOptionEl,
+    selectedOptionIndex,
+    highlightedOptionIndex,
+  ]);
 
   const getRef = (isSelected, isHighlighted) => {
     if (!isSelected && !isHighlighted) {
@@ -49,12 +68,6 @@ const Autocomplete = ({
 
     return isSelected ? setSelectedOptionEl : setHighlightedOptionEl;
   };
-
-  const [isFiltered, setIsFiltered] = useState(false);
-  const [isFirstFocusing, setIsFirstFocusing] = useState(isFocusOnMount);
-
-  const filteredOptionList = filterOptionList(optionList, value);
-  const resultOptionList = isFiltered ? filteredOptionList : optionList;
 
   useLayoutEffect(() => {
     if (!selectedOption) {
