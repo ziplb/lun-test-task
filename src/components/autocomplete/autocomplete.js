@@ -1,11 +1,11 @@
 import React, { useState, useLayoutEffect } from "react";
-import computeScrollIntoView from "compute-scroll-into-view";
 
 import Input from "../input/input";
 import AutocompleteOption from "../autocomplete-option/autocomplete-option";
 import { IconFilledAngleArrowDown, IconFilledAngleArrowUp } from "../icons";
 import AutocompleteScrollbar from "./scrollbar";
 
+import { scrollIntoView, filterOptionList } from "./helpers";
 import "./autocomplete.css";
 
 const KEY_CODES = {
@@ -14,11 +14,6 @@ const KEY_CODES = {
   ESCAPE: 27,
   ENTER: 13,
 };
-
-const filterOptionList = (list, value) =>
-  list.filter(
-    ({ title }) => title.toLowerCase().indexOf(value.toLowerCase()) === 0
-  );
 
 const Autocomplete = ({
   value = "",
@@ -44,15 +39,7 @@ const Autocomplete = ({
       return;
     }
 
-    const actions = computeScrollIntoView(highlightedOptionEl, {
-      boundary: optionListEl,
-      block: "nearest",
-    });
-
-    actions.forEach(({ el, top, left }) => {
-      el.scrollTop = top;
-      el.scrollLeft = left;
-    });
+    scrollIntoView(optionListEl, highlightedOptionEl);
   }, [optionListEl, highlightedOptionEl]);
 
   const getRef = (isSelected, isHighlighted) => {
