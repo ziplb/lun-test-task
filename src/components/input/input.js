@@ -15,7 +15,7 @@ const Input = ({
   onChange = () => {},
   ...rest
 }) => {
-  const inputRef = useElementFocusOnMount(isFocusOnMount);
+  const ref = useElementFocusOnMount(isFocusOnMount);
 
   return (
     <div className="Input">
@@ -25,7 +25,7 @@ const Input = ({
           "Input-el--small": isSmall,
           "Input-el--withRightGap": icon,
         })}
-        ref={inputRef}
+        ref={ref}
         onChange={(e) => onChange(getValue(e))}
         {...rest}
       />
