@@ -87,6 +87,7 @@ const useLocationData = () => {
   const handleCountryChange = (e) => {
     setCountry(null);
     setCity(null);
+    setCityQuery("");
     handleChange(e);
   };
 
