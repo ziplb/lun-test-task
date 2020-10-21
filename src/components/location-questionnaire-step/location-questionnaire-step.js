@@ -32,7 +32,7 @@ const getCityListByCountry = (cityList, country) => {
 };
 
 const getCountryByCity = (city) =>
-  countryList.find(({ slug }) => city.countrySlug);
+  countryList.find(({ slug }) => city.countrySlug === slug);
 
 const countryOptionList = countryList.map(normalizeCountry);
 
