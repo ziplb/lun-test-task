@@ -39,6 +39,16 @@
   transition: background-color 0.3s ease-out;
 }
 
+.Checkbox-el:focus + .Checkbox-mark {
+  box-shadow: var(--shadow-focused);
+}
+
+@media (max-width: 840px) {
+  .Checkbox-el:focus + .Checkbox-mark {
+    box-shadow: var(--shadow);
+  }
+}
+
 .Checkbox-el:checked + .Checkbox-mark {
   background-color: var(--color-orange);
 }
