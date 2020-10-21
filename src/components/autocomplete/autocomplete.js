@@ -68,6 +68,10 @@ const Autocomplete = ({
   const resultOptionList = isFiltered ? filteredOptionList : optionList;
 
   useLayoutEffect(() => {
+    if (!selectedOption) {
+      return;
+    }
+
     const optionIndex = resultOptionList.findIndex(
       ({ value }) => value === selectedOption?.value
     );
@@ -132,6 +136,7 @@ const Autocomplete = ({
     }
 
     setIsOptionsShowed(!isOptionsShowed);
+    setIsFiltered(false);
   };
 
   const handleInputKeyDown = (e) => {
