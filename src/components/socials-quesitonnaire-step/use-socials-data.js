@@ -3,6 +3,7 @@ import { object, string, addMethod as addYupMethod } from "yup";
 
 import { submitSocialsStep, useSocialList } from "../../store";
 import { useStepNavigation } from "../../hooks";
+import { getFormikError } from "../../utils";
 
 addYupMethod(string, "requiredIfNotNull", function (message) {
   return this.test("defined", message, (value) => value || value === null);
@@ -45,11 +46,12 @@ const useSocialsData = () => {
   });
 
   return [
-    { values, touched, errors },
+    { values },
     {
       onChange: handleChange,
       onSubmit: handleSubmit,
       onFieldValueSet: setFieldValue,
+      getError: (slug) => getFormikError(slug, errors, touched),
     },
   ];
 };

@@ -1,10 +1,10 @@
 import { useFormik } from "formik";
 import { object, addMethod as addYupMethod } from "yup";
 
-import { submitFavoriteAnimalStep } from "../../store";
+import { submitFavoriteAnimalStep, useFavoriteAnimal } from "../../store";
 import { animalKinds } from "../../data";
 import { useStepNavigation } from "../../hooks";
-import { useFavoriteAnimal } from "../../store";
+import { getFormikError } from "../../utils";
 
 addYupMethod(object, "isCat", function (message) {
   return this.test(
@@ -37,11 +37,20 @@ const useFavoriteAnimalData = () => {
     },
   });
 
+  const checkIsFocusOnMount = (animal, index) => {
+    if (!values.favoriteAnimal && index === 0) {
+      return true;
+    }
+
+    return values.favoriteAnimal?.slug === animal.slug;
+  };
+
   return [
-    { values, touched, errors },
+    { values, error: getFormikError("favoriteAnimal", errors, touched) },
     {
       onSubmit: handleSubmit,
-      onFieldValueSet: setFieldValue,
+      onChange: (animal) => setFieldValue("favoriteAnimal", animal),
+      checkIsFocusOnMount,
     },
   ];
 };

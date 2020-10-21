@@ -3,6 +3,7 @@ import { object, string } from "yup";
 
 import { submitPersonalStep, useFullName, useEmail } from "../../store";
 import { useStepNavigation } from "../../hooks";
+import { getFormikError } from "../../utils";
 
 const validationSchema = object().shape({
   fullName: string()
@@ -31,7 +32,11 @@ const usePersonalData = () => {
   });
 
   return [
-    { values, touched, errors },
+    {
+      values,
+      fullNameError: getFormikError("fullName", errors, touched),
+      emailError: getFormikError("email", errors, touched),
+    },
     { onChange: handleChange, onSubmit: handleSubmit },
   ];
 };
