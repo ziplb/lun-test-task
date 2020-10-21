@@ -5,6 +5,13 @@
   overflow: hidden;
 }
 
+@media (max-width: 640px) {
+  .FavoriteAnimalQuesitonnaireStep-gridHolder {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
 .FavoriteAnimalQuesitonnaireStep-grid {
   display: flex;
   flex-wrap: wrap;
