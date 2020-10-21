@@ -5,7 +5,6 @@ import Form from "../form/form";
 import Field from "../field/field";
 import Autocomplete from "../autocomplete/autocomplete";
 
-import { getFormikError } from "../../utils";
 import { locationStep } from "../../data";
 import useLocationData from "./use-location-data";
 
@@ -13,18 +12,15 @@ const LocationQuesitonnaireStep = () => {
   const [
     {
       values,
-      errors,
-      touched,
       countryOptionList,
       cityOptionList,
       selectedCountryOption,
       selectedCityOption,
+      countryError,
+      cityError,
     },
     { onCoutrySelect, onCitySelect, onCountryChage, onCityChange, onSubmit },
   ] = useLocationData();
-
-  const countryError = getFormikError("country", errors, touched);
-  const cityError = getFormikError("city", errors, touched);
 
   return (
     <QuestionnaireStep step={locationStep} onSubmit={onSubmit}>

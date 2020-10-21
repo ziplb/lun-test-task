@@ -13,6 +13,7 @@ import {
   getCityListByCountry,
   getCountryByCity,
 } from "./helpers";
+import { getFormikError } from "../../utils";
 
 const validationSchema = object().shape({
   country: object().nullable(true).required("Выберите страну"),
@@ -107,6 +108,8 @@ const useLocationData = () => {
       cityOptionList: cityListByCountry.map(normalizeCity),
       selectedCountryOption,
       selectedCityOption,
+      countryError: getFormikError("country", errors, touched),
+      cityError: getFormikError("city", errors, touched),
     },
     {
       onSubmit: handleSubmit,
