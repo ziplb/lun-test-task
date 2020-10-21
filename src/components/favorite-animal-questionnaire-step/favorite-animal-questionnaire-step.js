@@ -19,21 +19,23 @@ const FavoriteAnimalQuesitonnaireStep = () => {
   return (
     <div className="FavoriteAnimalQuesitonnaireStep">
       <QuestionnaireStep step={favoriteAnimalStep} onSubmit={onSubmit} isWide>
-        <div className="FavoriteAnimalQuesitonnaireStep-grid">
-          {animalList.map((animal) => (
-            <div
-              key={animal.slug}
-              className="FavoriteAnimalQuesitonnaireStep-item"
-            >
-              <AnimalRadio
-                name="favoriteAnimal"
-                image={animal.image}
-                value={animal.slug}
-                checked={values.favoriteAnimal?.slug === animal.slug}
-                onChange={() => onFieldValueSet("favoriteAnimal", animal)}
-              />
-            </div>
-          ))}
+        <div className="FavoriteAnimalQuesitonnaireStep-gridHolder">
+          <div className="FavoriteAnimalQuesitonnaireStep-grid">
+            {animalList.map((animal) => (
+              <div
+                key={animal.slug}
+                className="FavoriteAnimalQuesitonnaireStep-item"
+              >
+                <AnimalRadio
+                  name="favoriteAnimal"
+                  image={animal.image}
+                  value={animal.slug}
+                  checked={values.favoriteAnimal?.slug === animal.slug}
+                  onChange={() => onFieldValueSet("favoriteAnimal", animal)}
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         {error && (
