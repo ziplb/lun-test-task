@@ -1,11 +1,14 @@
+import { useCallback } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
 import { stepSlugInOrderList } from "../data";
 import { getQuestionnaireStepLink, getOverviewLink } from "../routes";
+import { useFilledStepSlugList } from "../store";
 
 const useStepNavigation = () => {
   const { push } = useHistory();
   const { pathname } = useLocation();
+  const filledStepSlugList = useFilledStepSlugList();
 
   const currentStepSlug = pathname.slice(pathname.lastIndexOf("/") + 1);
   const currentStepSlugIndex = stepSlugInOrderList.indexOf(currentStepSlug);
@@ -28,6 +31,11 @@ const useStepNavigation = () => {
     push(nextStepLink);
   };
 
+  const checkIsStepFilled = useCallback(
+    (stepSlug) => filledStepSlugList.includes(stepSlug),
+    [filledStepSlugList]
+  );
+
   return [
     {
       prevStepSlug,
@@ -35,7 +43,7 @@ const useStepNavigation = () => {
       isCurrentStepFirst,
       currentStepSlugIndex,
     },
-    { goToNextStep, checkIsFirstStep },
+    { goToNextStep, checkIsFirstStep, checkIsStepFilled },
   ];
 };
 

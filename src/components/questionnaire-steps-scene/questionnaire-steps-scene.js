@@ -13,7 +13,7 @@ import {
   getFavoriteAnimalQuestionnaireStepLink,
   getQuestionnaireFirstStepLink,
 } from "../../routes";
-import { useDataFromRedux } from "../../hooks";
+import { useStepNavigation } from "../../hooks";
 import {
   stepSlugInOrderList,
   personalStep,
@@ -46,7 +46,7 @@ const RoutesByStepSlugs = {
 
 const QuestionnaireStepsScene = () => {
   // eslint-disable-next-line no-empty-pattern
-  const [{}, { checkIsStepFilled }] = useDataFromRedux();
+  const [{}, { checkIsStepFilled }] = useStepNavigation();
 
   return (
     <Switch>

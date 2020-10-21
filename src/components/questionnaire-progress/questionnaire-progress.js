@@ -5,15 +5,13 @@ import cn from "classnames";
 
 import { stepSlugInOrderList } from "../../data";
 import { getQuestionnaireStepLink } from "../../routes";
-import { useStepNavigation, useDataFromRedux } from "../../hooks";
+import { useStepNavigation } from "../../hooks";
 
 import "./questionnaire-progress.css";
 
 const QuestionnaireProgress = () => {
   // eslint-disable-next-line no-empty-pattern
-  const [{}, { checkIsFirstStep }] = useStepNavigation();
-  // eslint-disable-next-line no-empty-pattern
-  const [{}, { checkIsStepFilled }] = useDataFromRedux();
+  const [{}, { checkIsFirstStep, checkIsStepFilled }] = useStepNavigation();
 
   const checkIsDisabled = (slug) => {
     if (checkIsFirstStep(slug)) {
