@@ -1,11 +1,11 @@
 import { useCallback } from "react";
 import { useSelector } from "react-redux";
 
-import { personalStep, socialsStep } from "../data";
-
 const useDataFromRedux = () => {
   const fullName = useSelector((state) => state.fullName);
   const email = useSelector((state) => state.email);
+  const country = useSelector((state) => state.country);
+  const city = useSelector((state) => state.city);
   const socialList = useSelector((state) => state.socialList);
   const favoriteAnimal = useSelector((state) => state.favoriteAnimal);
   const filledStepSlugList = useSelector((state) => state.filledStepSlugList);
@@ -15,18 +15,15 @@ const useDataFromRedux = () => {
     [filledStepSlugList]
   );
 
-  const isPersonalStepFilled = checkIsStepFilled(personalStep.slug);
-  const isSocialsStepFilled = checkIsStepFilled(socialsStep.slug);
-
   return [
     {
       fullName,
       email,
+      country,
+      city,
       socialList,
       favoriteAnimal,
       filledStepSlugList,
-      isPersonalStepFilled,
-      isSocialsStepFilled,
     },
     { checkIsStepFilled },
   ];

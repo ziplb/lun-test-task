@@ -25,7 +25,7 @@ export const favoriteAnimalStep = {
 
 const stepInOrderList = [
   personalStep,
-  // locationStep,
+  locationStep,
   socialsStep,
   favoriteAnimalStep,
 ];
@@ -71,7 +71,7 @@ export const socialList = [
   { slug: "ok", title: "Одноклассники" },
 ];
 
-export const countriesList = Object.entries(countries).map(([slug, title]) => ({
+export const countryList = Object.entries(countries).map(([slug, title]) => ({
   slug,
   title,
 }));

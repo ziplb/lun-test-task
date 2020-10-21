@@ -3,6 +3,7 @@ import { bindActionCreators } from "redux";
 
 import {
   personalStep,
+  locationStep,
   socialsStep,
   favoriteAnimalStep,
   socialList,
@@ -13,6 +14,7 @@ import { createAction } from "./helpers";
 // Types
 const SUBMIT_PERSONAL_STEP = "SUBMIT_PERSONAL_STEP";
 const SUBMIT_SOCIALS_STEP = "SUBMIT_SOCIALS_STEP";
+const SUBMIT_LOCATION_STEP = "SUBMIT_LOCATION_STEP";
 const SUBMIT_FAVORITE_ANIMAL_STEP = "SUBMIT_FAVORITE_ANIMAL_STEP";
 const RESTART = "RESTART";
 
@@ -20,6 +22,9 @@ const RESTART = "RESTART";
 const actions = {
   submitPersonalStep: (personal) =>
     createAction(SUBMIT_PERSONAL_STEP, personal),
+
+  submitLocationStep: (location) =>
+    createAction(SUBMIT_LOCATION_STEP, location),
 
   submitSocialsStep: (socials) =>
     createAction(SUBMIT_SOCIALS_STEP, { socials }),
@@ -34,6 +39,8 @@ const actions = {
 const initialState = {
   fullName: "",
   email: "",
+  country: null,
+  city: null,
   socialList: socialList.map((social) => ({ ...social, value: null })),
   favoriteAnimal: null,
   filledStepSlugList: [],
@@ -51,6 +58,20 @@ const reducer = (state = initialState, { type, payload }) => {
         filledStepSlugList: filterDuplicate([
           ...state.filledStepSlugList,
           personalStep.slug,
+        ]),
+      };
+    }
+
+    case SUBMIT_LOCATION_STEP: {
+      const { city, country } = payload;
+
+      return {
+        ...state,
+        city,
+        country,
+        filledStepSlugList: filterDuplicate([
+          ...state.filledStepSlugList,
+          locationStep.slug,
         ]),
       };
     }
@@ -97,6 +118,7 @@ const store = createStore(reducer);
 
 const {
   submitPersonalStep,
+  submitLocationStep,
   submitSocialsStep,
   submitFavoriteAnimalStep,
   restart,
@@ -104,6 +126,7 @@ const {
 
 export {
   submitPersonalStep,
+  submitLocationStep,
   submitSocialsStep,
   submitFavoriteAnimalStep,
   restart,

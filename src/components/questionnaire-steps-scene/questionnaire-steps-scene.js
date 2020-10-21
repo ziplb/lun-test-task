@@ -2,12 +2,13 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import PersonalQuestionnaireStep from "../personal-questionnaire-step/personal-questionnaire-step";
+import LocationQuestionnaireStep from "../location-questionnaire-step/location-questionnaire-step";
 import SocialsQuestionnaireStep from "../socials-quesitonnaire-step/socials-quesitonnaire-step";
 import FavoriteAnimalQuesitonnaireStep from "../favorite-animal-questionnaire-step/favorite-animal-questionnaire-step";
 
 import {
   getPersonalQuestionnaireStepLink,
-  // getLocationQuestionnaireStepLink,
+  getLocationQuestionnaireStepLink,
   getSocialsQuestionnaireStepLink,
   getFavoriteAnimalQuestionnaireStepLink,
   getQuestionnaireFirstStepLink,
@@ -16,6 +17,7 @@ import { useDataFromRedux } from "../../hooks";
 import {
   stepSlugInOrderList,
   personalStep,
+  locationStep,
   socialsStep,
   favoriteAnimalStep,
 } from "../../data";
@@ -24,6 +26,11 @@ const RoutesByStepSlugs = {
   [personalStep.slug]: {
     path: getPersonalQuestionnaireStepLink(),
     component: PersonalQuestionnaireStep,
+  },
+
+  [locationStep.slug]: {
+    path: getLocationQuestionnaireStepLink(),
+    component: LocationQuestionnaireStep,
   },
 
   [socialsStep.slug]: {
