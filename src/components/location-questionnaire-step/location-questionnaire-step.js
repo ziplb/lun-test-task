@@ -6,65 +6,25 @@ import Field from "../field/field";
 import Autocomplete from "../autocomplete/autocomplete";
 
 import { getFormikError } from "../../utils";
-import { locationStep, countryList, cityList } from "../../data";
+import { locationStep } from "../../data";
 import useLocationData from "./use-location-data";
-
-const normalizeCountry = ({ slug, title }) => ({ value: slug, title });
-const denormalizeCountry = ({ value, title }) => ({ slug: value, title });
-
-const normalizeCity = ({ slug, title, ...rest }) => ({
-  value: slug,
-  title,
-  ...rest,
-});
-const denormalizeCity = ({ value, title, ...rest }) => ({
-  slug: value,
-  title,
-  ...rest,
-});
-
-const getCityListByCountry = (cityList, country) => {
-  if (!country) {
-    return cityList;
-  }
-
-  return cityList.filter(({ countrySlug }) => countrySlug === country.slug);
-};
-
-const getCountryByCity = (city) =>
-  countryList.find(({ slug }) => city.countrySlug === slug);
-
-const countryOptionList = countryList.map(normalizeCountry);
 
 const FavoriteAnimalQuesitonnaireStep = () => {
   const [
-    { values, errors, touched },
-    { onChange, onCoutrySelect, onCitySelect, onSubmit },
+    {
+      values,
+      errors,
+      touched,
+      countryOptionList,
+      cityOptionList,
+      selectedCountryOption,
+      selectedCityOption,
+    },
+    { onCoutrySelect, onCitySelect, onCountryChage, onCityChange, onSubmit },
   ] = useLocationData();
 
   const countryError = getFormikError("country", errors, touched);
   const cityError = getFormikError("city", errors, touched);
-
-  const cityListByCountry = getCityListByCountry(cityList, values.country);
-  const cityOptionList = cityListByCountry.map(normalizeCity);
-
-  const handleCountryChange = (e) => {
-    onCoutrySelect(null);
-    onChange(e);
-  };
-
-  const handleCityChange = (e) => {
-    onCitySelect(null);
-    onChange(e);
-  };
-
-  const handleCitySelect = (city) => {
-    onCitySelect(denormalizeCity(city));
-    const country = getCountryByCity(city);
-    if (country) {
-      onCoutrySelect(country);
-    }
-  };
 
   return (
     <QuestionnaireStep step={locationStep} onSubmit={onSubmit}>
@@ -74,12 +34,10 @@ const FavoriteAnimalQuesitonnaireStep = () => {
             name="countryQuery"
             placeholder="Страна"
             value={values.countryQuery}
-            selectedOption={values.country && normalizeCountry(values.country)}
+            selectedOption={selectedCountryOption}
             optionList={countryOptionList}
-            onChange={handleCountryChange}
-            onOptionSelect={(country) =>
-              onCoutrySelect(denormalizeCountry(country))
-            }
+            onChange={onCountryChage}
+            onOptionSelect={onCoutrySelect}
           />
         </Field>
       </Form.Row>
@@ -90,9 +48,10 @@ const FavoriteAnimalQuesitonnaireStep = () => {
             name="cityQuery"
             placeholder="Город"
             value={values.cityQuery}
+            selectedOption={selectedCityOption}
             optionList={cityOptionList}
-            onChange={handleCityChange}
-            onOptionSelect={handleCitySelect}
+            onChange={onCityChange}
+            onOptionSelect={onCitySelect}
           />
         </Field>
       </Form.Row>

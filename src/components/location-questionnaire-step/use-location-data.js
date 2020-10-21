@@ -3,6 +3,15 @@ import { object } from "yup";
 
 import { submitLocationStep } from "../../store";
 import { useStepNavigation, useDataFromRedux } from "../../hooks";
+import { countryList, cityList } from "../../data";
+import {
+  normalizeCountry,
+  denormalizeCountry,
+  normalizeCity,
+  denormalizeCity,
+  getCityListByCountry,
+  getCountryByCity,
+} from "./helpers";
 
 const validationSchema = object().shape({
   country: object().nullable(true).required("Выберите страну"),
@@ -36,29 +45,64 @@ const useLocationData = () => {
     },
   });
 
-  const handleCountrySelect = (country) => {
-    setFieldValue("country", country);
+  const cityListByCountry = getCityListByCountry(cityList, values.country);
+  const selectedCountryOption =
+    values.country && normalizeCountry(values.country);
+  const selectedCityOption = values.city && normalizeCity(values.city);
 
-    if (country?.title) {
-      setFieldValue("countryQuery", country.title);
+  const setCountry = (country) => setFieldValue("country", country);
+  const setCountryQuery = (countryQuery) =>
+    setFieldValue("countryQuery", countryQuery);
+
+  const setCity = (city) => setFieldValue("city", city);
+  const resetCity = () => setCity(null);
+  const setCityQuery = (cityQuery) => setFieldValue("cityQuery", cityQuery);
+
+  const handleCountrySelect = (normalizedCountry) => {
+    const country = denormalizeCountry(normalizedCountry);
+    setCountry(country);
+    setCountryQuery(country.title);
+    resetCity();
+  };
+
+  const handleCitySelect = (normalizedCity) => {
+    const city = denormalizeCity(normalizedCity);
+    setCity(city);
+    setCityQuery(city.title);
+
+    if (!values.country) {
+      setCountry(getCountryByCity(countryList, city));
+      setCountryQuery(getCountryByCity(countryList, city)?.title);
     }
   };
 
-  const handleCitySelect = (city) => {
-    setFieldValue("city", city);
+  const handleCountryChange = (e) => {
+    setCountry(null);
+    setCity(null);
+    handleChange(e);
+  };
 
-    if (city?.title) {
-      setFieldValue("cityQuery", city.title);
-    }
+  const handleCityChange = (e) => {
+    setCity(null);
+    handleChange(e);
   };
 
   return [
-    { values, touched, errors },
+    {
+      values,
+      touched,
+      errors,
+      countryOptionList: countryList.map(normalizeCountry),
+      cityOptionList: cityListByCountry.map(normalizeCity),
+      selectedCountryOption,
+      selectedCityOption,
+    },
     {
       onSubmit: handleSubmit,
+      onCountryChage: handleCountryChange,
+      onCityChange: handleCityChange,
       onCoutrySelect: handleCountrySelect,
       onCitySelect: handleCitySelect,
-      onChange: handleChange,
     },
   ];
 };
