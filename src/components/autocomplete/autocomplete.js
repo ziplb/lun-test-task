@@ -100,12 +100,12 @@ const Autocomplete = ({
   };
 
   const goToPrevOption = () => {
-    const nextOptionIndex =
+    const prevOptionIndex =
       highlightedOptionIndex === 0
         ? resultOptionList.length - 1
         : highlightedOptionIndex - 1;
 
-    setHighlightedOptionIndex(nextOptionIndex);
+    setHighlightedOptionIndex(prevOptionIndex);
   };
 
   const handleKeyDown = () => {
@@ -137,6 +137,7 @@ const Autocomplete = ({
   const handleInputKeyDown = (e) => {
     const { keyCode } = e;
     const { UP, DOWN, ESCAPE, ENTER } = KEY_CODES;
+    setIsOptionsShowed(true);
 
     if (keyCode === DOWN) {
       e.preventDefault();
