@@ -127,11 +127,11 @@ const Autocomplete = ({
   };
 
   const handleEnter = () => {
-    setIsOptionsShowed(!isOptionsShowed);
-
-    if (highlightedOptionIndex) {
+    if (highlightedOptionIndex >= 0) {
       onOptionSelect(resultOptionList[highlightedOptionIndex]);
     }
+
+    setIsOptionsShowed(!isOptionsShowed);
   };
 
   const handleInputKeyDown = (e) => {
