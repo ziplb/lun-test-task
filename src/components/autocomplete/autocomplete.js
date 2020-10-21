@@ -9,6 +9,8 @@ import "./autocomplete.css";
 const KEY_CODES = {
   UP: 38,
   DOWN: 40,
+  ESCAPE: 27,
+  ENTER: 13,
 };
 
 const filterOptionList = (list, value) =>
@@ -24,6 +26,7 @@ const Autocomplete = ({
   onOptionSelect,
   ...rest
 }) => {
+  const [isOptionsShowed, setIsOptionsShowed] = useState(false);
   const [optionListEl, setOptionListEl] = useState(null);
   const [selectedOptionEl, setSelectedOptionEl] = useState(null);
   const [highlightedOptionEl, setHighlightedOptionEl] = useState(null);
@@ -59,20 +62,16 @@ const Autocomplete = ({
 
   //
 
-  const [isOptionsShowed, setIsOptionsShowed] = useState(false);
   const [isFiltered, setIsFiltered] = useState(false);
 
   const filteredOptionList = filterOptionList(optionList, value);
   const resultOptionList = isFiltered ? filteredOptionList : optionList;
 
   useLayoutEffect(() => {
-    if (!selectedOption) {
-      return;
-    }
-
     const optionIndex = resultOptionList.findIndex(
-      ({ value }) => value === selectedOption.value
+      ({ value }) => value === selectedOption?.value
     );
+
     setHighlightedOptionIndex(optionIndex);
   }, [resultOptionList, selectedOption]);
 
@@ -127,9 +126,17 @@ const Autocomplete = ({
     goToPrevOption();
   };
 
+  const handleEnter = () => {
+    setIsOptionsShowed(!isOptionsShowed);
+
+    if (highlightedOptionIndex) {
+      onOptionSelect(resultOptionList[highlightedOptionIndex]);
+    }
+  };
+
   const handleInputKeyDown = (e) => {
     const { keyCode } = e;
-    const { UP, DOWN } = KEY_CODES;
+    const { UP, DOWN, ESCAPE, ENTER } = KEY_CODES;
 
     if (keyCode === DOWN) {
       e.preventDefault();
@@ -141,6 +148,15 @@ const Autocomplete = ({
       e.preventDefault();
       handleKeyUp();
       return;
+    }
+
+    if (keyCode === ENTER) {
+      handleEnter();
+      return;
+    }
+
+    if (keyCode === ESCAPE) {
+      setIsOptionsShowed(false);
     }
   };
 
