@@ -21,7 +21,7 @@ const FavoriteAnimalQuesitonnaireStep = () => {
       <QuestionnaireStep step={favoriteAnimalStep} onSubmit={onSubmit} isWide>
         <div className="FavoriteAnimalQuesitonnaireStep-gridHolder">
           <div className="FavoriteAnimalQuesitonnaireStep-grid">
-            {animalList.map((animal) => (
+            {animalList.map((animal, index) => (
               <div
                 key={animal.slug}
                 className="FavoriteAnimalQuesitonnaireStep-item"
@@ -31,6 +31,7 @@ const FavoriteAnimalQuesitonnaireStep = () => {
                   image={animal.image}
                   value={animal.slug}
                   checked={values.favoriteAnimal?.slug === animal.slug}
+                  isFocusOnMount={index === 0}
                   onChange={() => onFieldValueSet("favoriteAnimal", animal)}
                 />
               </div>
