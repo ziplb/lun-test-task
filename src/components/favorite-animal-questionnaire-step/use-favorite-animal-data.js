@@ -17,7 +17,7 @@ const validationSchema = object().shape({
   favoriteAnimal: object()
     .nullable(true)
     .required("Выберите своего любимого котика")
-    .isCat("Нужно выбрать котика"),
+    .isCat("Вы выбрали собачку, а нужно котика"),
 });
 
 const useFavoriteAnimalData = () => {
