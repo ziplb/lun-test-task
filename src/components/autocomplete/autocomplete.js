@@ -37,7 +37,7 @@ const Autocomplete = ({
   }, [selectedOptionEl]);
 
   useLayoutEffect(() => {
-    if (!highlightedOptionEl || !highlightedOptionEl) {
+    if (!optionListEl || !highlightedOptionEl) {
       return;
     }
 
