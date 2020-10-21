@@ -29,6 +29,7 @@ const LocationQuesitonnaireStep = () => {
           <Autocomplete
             name="countryQuery"
             placeholder="Страна"
+            emptyMessage="Стран по запросу не найдено"
             value={values.countryQuery}
             selectedOption={selectedCountryOption}
             optionList={countryOptionList}
@@ -44,6 +45,7 @@ const LocationQuesitonnaireStep = () => {
           <Autocomplete
             name="cityQuery"
             placeholder="Город"
+            emptyMessage="Городов по запросу не найдено"
             value={values.cityQuery}
             selectedOption={selectedCityOption}
             optionList={cityOptionList}

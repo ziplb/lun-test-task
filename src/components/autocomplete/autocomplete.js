@@ -19,6 +19,7 @@ const Autocomplete = ({
   value = "",
   optionList = [],
   selectedOption,
+  emptyMessage = "Доступных опций нет",
   isFocusOnMount,
   onChange,
   onOptionSelect,
@@ -37,6 +38,7 @@ const Autocomplete = ({
   const selectedOptionIndex = resultOptionList.findIndex(
     ({ value }) => value === selectedOption?.value
   );
+  const noOptions = resultOptionList.length === 0;
 
   useLayoutEffect(() => {
     setHighlightedOptionEl(selectedOptionEl);
@@ -214,28 +216,32 @@ const Autocomplete = ({
 
       {isOptionsShowed && (
         <div className="Autocomplete-optionList" ref={setOptionListEl}>
-          <AutocompleteScrollbar>
-            {resultOptionList.map((option, index) => {
-              const isSelected = selectedOption?.value === option.value;
-              const isHighlighted = highlightedOptionIndex === index;
-              const ref = getRef(isSelected, isHighlighted);
+          {noOptions ? (
+            <div className="Autocomplete-emptyMessage">{emptyMessage}</div>
+          ) : (
+            <AutocompleteScrollbar>
+              {resultOptionList.map((option, index) => {
+                const isSelected = selectedOption?.value === option.value;
+                const isHighlighted = highlightedOptionIndex === index;
+                const ref = getRef(isSelected, isHighlighted);
 
-              return (
-                <div
-                  key={option.value}
-                  className="Autocomplete-optionItem"
-                  ref={ref}
-                >
-                  <AutocompleteOption
-                    option={option}
-                    isSelected={isSelected}
-                    isHighlighted={isHighlighted}
-                    onClick={handleOptionSelect}
-                  />
-                </div>
-              );
-            })}
-          </AutocompleteScrollbar>
+                return (
+                  <div
+                    key={option.value}
+                    className="Autocomplete-optionItem"
+                    ref={ref}
+                  >
+                    <AutocompleteOption
+                      option={option}
+                      isSelected={isSelected}
+                      isHighlighted={isHighlighted}
+                      onClick={handleOptionSelect}
+                    />
+                  </div>
+                );
+              })}
+            </AutocompleteScrollbar>
+          )}
         </div>
       )}
     </div>
