@@ -25,6 +25,7 @@ const Autocomplete = ({
   value = "",
   optionList = [],
   selectedOption,
+  isFocusOnMount,
   onChange,
   onOptionSelect,
   ...rest
@@ -64,6 +65,7 @@ const Autocomplete = ({
   };
 
   const [isFiltered, setIsFiltered] = useState(false);
+  const [isFirstFocusing, setIsFirstFocusing] = useState(isFocusOnMount);
 
   const filteredOptionList = filterOptionList(optionList, value);
   const resultOptionList = isFiltered ? filteredOptionList : optionList;
@@ -89,7 +91,11 @@ const Autocomplete = ({
   };
 
   const handleInputFocus = () => {
-    setIsOptionsShowed(true);
+    setIsFirstFocusing(false);
+
+    if (!isFirstFocusing) {
+      setIsOptionsShowed(true);
+    }
 
     if (selectedOption) {
       setIsFiltered(false);
@@ -202,6 +208,7 @@ const Autocomplete = ({
           onBlur={() => setIsOptionsShowed(false)}
           onChange={handleInputChange}
           onKeyDown={handleInputKeyDown}
+          isFocusOnMount={isFocusOnMount}
           {...rest}
         />
       </div>

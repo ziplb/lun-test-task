@@ -3,33 +3,40 @@ import cn from "classnames";
 
 import IconContainer from "../icon-container/icon-container";
 
+import { useElementFocusOnMount } from "../../hooks";
 import "./input.css";
 
 const Input = ({
   icon,
   isError,
   isSmall,
+  isFocusOnMount,
   getValue = (e) => e,
   onChange = () => {},
   ...rest
-}) => (
-  <div className="Input">
-    <input
-      className={cn("Input-el", {
-        "Input-el--error": isError,
-        "Input-el--small": isSmall,
-        "Input-el--withRightGap": icon,
-      })}
-      onChange={(e) => onChange(getValue(e))}
-      {...rest}
-    />
+}) => {
+  const inputRef = useElementFocusOnMount(isFocusOnMount);
 
-    {icon && (
-      <div className="Input-icon">
-        <IconContainer>{icon}</IconContainer>
-      </div>
-    )}
-  </div>
-);
+  return (
+    <div className="Input">
+      <input
+        className={cn("Input-el", {
+          "Input-el--error": isError,
+          "Input-el--small": isSmall,
+          "Input-el--withRightGap": icon,
+        })}
+        ref={inputRef}
+        onChange={(e) => onChange(getValue(e))}
+        {...rest}
+      />
+
+      {icon && (
+        <div className="Input-icon">
+          <IconContainer>{icon}</IconContainer>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default Input;

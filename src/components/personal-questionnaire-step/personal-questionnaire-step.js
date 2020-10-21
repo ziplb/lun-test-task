@@ -28,6 +28,7 @@ const PersonalQuestionnaireStep = () => {
             value={values.fullName}
             isError={fullNameError}
             onChange={onChange}
+            isFocusOnMount
           />
         </Field>
       </Form.Row>

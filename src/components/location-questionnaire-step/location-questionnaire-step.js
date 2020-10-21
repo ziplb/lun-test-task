@@ -38,6 +38,7 @@ const LocationQuesitonnaireStep = () => {
             optionList={countryOptionList}
             onChange={onCountryChage}
             onOptionSelect={onCoutrySelect}
+            isFocusOnMount
           />
         </Field>
       </Form.Row>
