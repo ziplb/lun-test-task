@@ -3,6 +3,7 @@ import computeScrollIntoView from "compute-scroll-into-view";
 
 import Input from "../input/input";
 import AutocompleteOption from "../autocomplete-option/autocomplete-option";
+import { IconFilledAngleArrowDown, IconFilledAngleArrowUp } from "../icons";
 
 import "./autocomplete.css";
 
@@ -187,6 +188,13 @@ const Autocomplete = ({
         <Input
           value={value}
           autoComplete="off"
+          icon={
+            isOptionsShowed ? (
+              <IconFilledAngleArrowUp />
+            ) : (
+              <IconFilledAngleArrowDown />
+            )
+          }
           onClick={handleInpuClick}
           onFocus={handleInputFocus}
           onBlur={() => setIsOptionsShowed(false)}
