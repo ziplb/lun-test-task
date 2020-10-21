@@ -12,8 +12,9 @@
   right: 0;
   top: calc(100% + 4px);
   max-height: 240px;
-  overflow: auto;
+  border-radius: 2px;
   box-shadow: var(--shadow);
+  overflow: auto;
 }
 
 .Autocomplete-optionItem {
