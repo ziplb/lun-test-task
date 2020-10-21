@@ -9,6 +9,7 @@ const AutocompleteOption = ({ option, isSelected, isHighlighted, onClick }) => (
       "AutocompleteOption--selected": isSelected,
       "AutocompleteOption--highlighted": isHighlighted,
     })}
+    tabIndex={-1}
     onMouseDown={(e) => e.preventDefault()}
     onClick={() => onClick(option)}
   >

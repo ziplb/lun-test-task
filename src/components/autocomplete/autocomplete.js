@@ -162,7 +162,10 @@ const Autocomplete = ({
     }
 
     if (keyCode === ENTER) {
-      e.preventDefault();
+      if (isOptionsShowed) {
+        e.preventDefault();
+      }
+
       handleEnter();
       return;
     }
