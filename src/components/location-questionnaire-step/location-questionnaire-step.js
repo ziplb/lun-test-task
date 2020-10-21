@@ -45,8 +45,6 @@ const FavoriteAnimalQuesitonnaireStep = () => {
   const cityListByCountry = getCityListByCountry(cityList, values.country);
   const cityOptionList = cityListByCountry.map(normalizeCity);
 
-  // const
-
   const handleCountryChange = (e) => {
     onCoutrySelect(null);
     onChange(e);
