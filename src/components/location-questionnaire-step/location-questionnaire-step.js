@@ -31,6 +31,9 @@ const getCityListByCountry = (cityList, country) => {
   return cityList.filter(({ countrySlug }) => countrySlug === country.slug);
 };
 
+const getCountryByCity = (city) =>
+  countryList.find(({ slug }) => city.countrySlug);
+
 const countryOptionList = countryList.map(normalizeCountry);
 
 const FavoriteAnimalQuesitonnaireStep = () => {
@@ -53,6 +56,14 @@ const FavoriteAnimalQuesitonnaireStep = () => {
   const handleCityChange = (e) => {
     onCitySelect(null);
     onChange(e);
+  };
+
+  const handleCitySelect = (city) => {
+    onCitySelect(denormalizeCity(city));
+    const country = getCountryByCity(city);
+    if (country) {
+      onCoutrySelect(country);
+    }
   };
 
   return (
@@ -81,7 +92,7 @@ const FavoriteAnimalQuesitonnaireStep = () => {
             value={values.cityQuery}
             optionList={cityOptionList}
             onChange={handleCityChange}
-            onOptionSelect={(city) => onCitySelect(denormalizeCity(city))}
+            onOptionSelect={handleCitySelect}
           />
         </Field>
       </Form.Row>
