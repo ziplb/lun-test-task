@@ -79,12 +79,18 @@ const Autocomplete = ({
 
   const handleInpuClick = () => {
     setIsOptionsShowed(true);
-    setIsFiltered(false);
+
+    if (selectedOption) {
+      setIsFiltered(false);
+    }
   };
 
   const handleInputFocus = () => {
     setIsOptionsShowed(true);
-    setIsFiltered(false);
+
+    if (selectedOption) {
+      setIsFiltered(false);
+    }
   };
 
   const handleInputChange = (e) => {
