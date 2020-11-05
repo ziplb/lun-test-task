@@ -13,8 +13,16 @@ const SocialsQuestionnaireStep = () => {
     { onChange, onSubmit, onFieldValueSet, getError },
   ] = useSocialsData();
 
+  const isNextDisabled = socialList
+    .map(({ slug }) => getError(slug))
+    .some(Boolean);
+
   return (
-    <QuesitonnaireStep step={socialsStep} onSubmit={onSubmit}>
+    <QuesitonnaireStep
+      step={socialsStep}
+      isNextDisabled={isNextDisabled}
+      onSubmit={onSubmit}
+    >
       {socialList.map(({ slug, title }, index) => (
         <Form.Row key={slug}>
           <SocialField

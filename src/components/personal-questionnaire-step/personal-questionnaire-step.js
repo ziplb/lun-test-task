@@ -15,7 +15,11 @@ const PersonalQuestionnaireStep = () => {
   ] = usePersonalData();
 
   return (
-    <QuestionnaireStep step={personalStep} onSubmit={onSubmit}>
+    <QuestionnaireStep
+      step={personalStep}
+      isNextDisabled={fullNameError || emailError}
+      onSubmit={onSubmit}
+    >
       <Form.Row>
         <Field hint={fullNameError} isError={fullNameError}>
           <Input

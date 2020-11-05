@@ -23,7 +23,11 @@ const LocationQuesitonnaireStep = () => {
   ] = useLocationData();
 
   return (
-    <QuestionnaireStep step={locationStep} onSubmit={onSubmit}>
+    <QuestionnaireStep
+      step={locationStep}
+      isNextDisabled={countryError || cityError}
+      onSubmit={onSubmit}
+    >
       <Form.Row>
         <Field hint={countryError} isError={countryError}>
           <Autocomplete

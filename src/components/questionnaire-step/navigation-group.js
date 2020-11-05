@@ -8,7 +8,7 @@ import { IconAngleArrowLeft, IconAngleArrowRight } from "../icons";
 import { getQuestionnaireStepLink } from "../../routes";
 import { useStepNavigation } from "../../hooks";
 
-const QuestionnaireStepNavigationGroup = () => {
+const QuestionnaireStepNavigationGroup = ({ isNextDisabled }) => {
   const [{ prevStepSlug, isCurrentStepLast }] = useStepNavigation();
 
   return (
@@ -29,6 +29,7 @@ const QuestionnaireStepNavigationGroup = () => {
           title={isCurrentStepLast ? "Завершить" : "Вперед"}
           appendIcon={<IconAngleArrowRight />}
           isPrimary={isCurrentStepLast}
+          isDisabled={isNextDisabled}
         />
       </div>
     </div>

@@ -7,7 +7,13 @@ import QuestionnaireStepNavigationGroup from "./navigation-group";
 import { useStepNavigation } from "../../hooks";
 import "./questionnaire-step.css";
 
-const QuestionnaireStep = ({ step, children, isWide, onSubmit }) => {
+const QuestionnaireStep = ({
+  step,
+  children,
+  isWide,
+  isNextDisabled,
+  onSubmit,
+}) => {
   const [{ currentStepSlugIndex }] = useStepNavigation();
 
   return (
@@ -24,7 +30,10 @@ const QuestionnaireStep = ({ step, children, isWide, onSubmit }) => {
         <div className="QuestionnaireStep-form">
           <div className="QuestionnaireStep-content">{children}</div>
 
-          <QuestionnaireStepNavigationGroup stepSlug={step.slug} />
+          <QuestionnaireStepNavigationGroup
+            stepSlug={step.slug}
+            isNextDisabled={isNextDisabled}
+          />
         </div>
       </Form>
     </div>
