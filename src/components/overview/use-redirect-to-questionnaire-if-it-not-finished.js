@@ -1,16 +1,12 @@
 import { useLayoutEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import { stepSlugInOrderList } from "../../data";
 import { getQuestionnaireLink } from "../../routes";
-import { useFinishedStepSlugList } from "../../store";
+import { useCheckIsQuestionnaireFinished } from "../../hooks";
 
 const useRedirectToQuestionnaireIfItNotFinished = () => {
-  const finishdedStepSlugList = useFinishedStepSlugList();
+  const isFinished = useCheckIsQuestionnaireFinished();
   const { replace } = useHistory();
-
-  const isFinished =
-    stepSlugInOrderList.length === finishdedStepSlugList.length;
 
   useLayoutEffect(() => {
     if (!isFinished) {
