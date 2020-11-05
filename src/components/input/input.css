@@ -15,7 +15,11 @@
   font: inherit;
   appearance: none;
   outline: none;
-  transition: border 0.3s ease-in-out;
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.Input-el:focus {
+  border: 1px solid #ff9800;
 }
 
 .Input-el::placeholder {
