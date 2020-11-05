@@ -14,13 +14,14 @@ const QuestionnaireStepNavigationGroup = () => {
   return (
     <div className="QuestionnaireStep-navigationGroup">
       <div className="QuestionnaireStep-navigationItem">
-        <Button
-          title="Назад"
-          prependIcon={<IconAngleArrowLeft />}
-          component={Link}
-          to={getQuestionnaireStepLink(prevStepSlug)}
-          isDisabled={!prevStepSlug}
-        />
+        {prevStepSlug && (
+          <Button
+            title="Назад"
+            prependIcon={<IconAngleArrowLeft />}
+            component={Link}
+            to={getQuestionnaireStepLink(prevStepSlug)}
+          />
+        )}
       </div>
 
       <div className="QuestionnaireStep-navigationItem">
