@@ -87,11 +87,6 @@ export const socialOk = { slug: "ok", title: "Одноклассники" };
 export const socialList = [socialFacebook, socialVk, socialTwitter, socialOk];
 
 // Locations
-export const countryList = Object.entries(countries).map(([slug, title]) => ({
-  slug,
-  title,
-}));
-
 export const cityList = Object.entries(cities).map(
   ([slug, { country, name }]) => ({
     slug,
@@ -99,3 +94,14 @@ export const cityList = Object.entries(cities).map(
     countrySlug: String(country),
   })
 );
+
+const countryWithCityIdList = [
+  ...new Set(cityList.map(({ countrySlug }) => countrySlug)),
+];
+
+export const countryList = Object.entries(countries)
+  .map(([slug, title]) => ({
+    slug,
+    title,
+  }))
+  .filter(({ slug }) => countryWithCityIdList.includes(slug));
