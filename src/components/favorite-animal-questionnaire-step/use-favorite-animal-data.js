@@ -26,7 +26,14 @@ const useFavoriteAnimalData = () => {
   // eslint-disable-next-line no-empty-pattern
   const [{}, { goToNextStep }] = useStepNavigation();
 
-  const { values, touched, errors, handleSubmit, setFieldValue } = useFormik({
+  const {
+    values,
+    touched,
+    errors,
+    handleSubmit,
+    setFieldValue,
+    setTouched,
+  } = useFormik({
     initialValues: {
       favoriteAnimal,
     },
@@ -45,11 +52,16 @@ const useFavoriteAnimalData = () => {
     return values.favoriteAnimal?.slug === animal.slug;
   };
 
+  const _handleChange = (animal) => {
+    setFieldValue("favoriteAnimal", animal);
+    setTouched({ ...touched, favoriteAnimal: false });
+  };
+
   return [
     { values, error: getFormikError("favoriteAnimal", errors, touched) },
     {
       onSubmit: handleSubmit,
-      onChange: (animal) => setFieldValue("favoriteAnimal", animal),
+      onChange: _handleChange,
       checkIsFocusOnMount,
     },
   ];

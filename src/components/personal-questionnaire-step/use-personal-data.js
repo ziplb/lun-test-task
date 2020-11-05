@@ -22,7 +22,14 @@ const usePersonalData = () => {
   // eslint-disable-next-line no-empty-pattern
   const [{}, { goToNextStep }] = useStepNavigation();
 
-  const { values, touched, errors, handleChange, handleSubmit } = useFormik({
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleSubmit,
+    setTouched,
+  } = useFormik({
     initialValues: { fullName, email },
     validationSchema,
     onSubmit: (values) => {
@@ -31,13 +38,18 @@ const usePersonalData = () => {
     },
   });
 
+  const _handleChange = (e) => {
+    handleChange(e);
+    setTouched({ ...touched, [e.target.name]: false });
+  };
+
   return [
     {
       values,
       fullNameError: getFormikError("fullName", errors, touched),
       emailError: getFormikError("email", errors, touched),
     },
-    { onChange: handleChange, onSubmit: handleSubmit },
+    { onChange: _handleChange, onSubmit: handleSubmit },
   ];
 };
 

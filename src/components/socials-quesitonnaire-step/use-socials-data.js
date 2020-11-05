@@ -34,6 +34,7 @@ const useSocialsData = () => {
     handleChange,
     handleSubmit,
     setFieldValue,
+    setTouched,
   } = useFormik({
     initialValues: Object.fromEntries(
       socialList.map(({ slug, value }) => [slug, value])
@@ -45,10 +46,15 @@ const useSocialsData = () => {
     },
   });
 
+  const _handleChange = (e) => {
+    handleChange(e);
+    setTouched({ ...touched, [e.target.name]: false });
+  };
+
   return [
     { values },
     {
-      onChange: handleChange,
+      onChange: _handleChange,
       onSubmit: handleSubmit,
       onFieldValueSet: setFieldValue,
       getError: (slug) => getFormikError(slug, errors, touched),

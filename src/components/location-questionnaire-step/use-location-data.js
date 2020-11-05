@@ -34,6 +34,7 @@ const useLocationData = () => {
     handleChange,
     setFieldValue,
     setValues,
+    setTouched,
   } = useFormik({
     initialValues: {
       countryQuery: country?.title,
@@ -92,11 +93,13 @@ const useLocationData = () => {
     setCity(null);
     setCityQuery("");
     handleChange(e);
+    setTouched({ ...touched, country: false });
   };
 
   const handleCityChange = (e) => {
     setCity(null);
     handleChange(e);
+    setTouched({ ...touched, city: false });
   };
 
   return [
