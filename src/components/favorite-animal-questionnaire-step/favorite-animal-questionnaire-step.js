@@ -9,7 +9,7 @@ import "./favorite-animal-questionnaire-step.css";
 
 const FavoriteAnimalQuesitonnaireStep = () => {
   const [
-    { values, error },
+    { values, error, hasUnsavedData },
     { onChange, onSubmit, checkIsFocusOnMount },
   ] = useFavoriteAnimalData();
 
@@ -18,6 +18,7 @@ const FavoriteAnimalQuesitonnaireStep = () => {
       <QuestionnaireStep
         step={favoriteAnimalStep}
         isNextDisabled={error}
+        hasUnsavedData={hasUnsavedData}
         onSubmit={onSubmit}
         isWide
       >

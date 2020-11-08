@@ -18,6 +18,7 @@ const LocationQuesitonnaireStep = () => {
       selectedCityOption,
       countryError,
       cityError,
+      hasUnsavedData,
     },
     { onCoutrySelect, onCitySelect, onCountryChage, onCityChange, onSubmit },
   ] = useLocationData();
@@ -26,6 +27,7 @@ const LocationQuesitonnaireStep = () => {
     <QuestionnaireStep
       step={locationStep}
       isNextDisabled={countryError || cityError}
+      hasUnsavedData={hasUnsavedData}
       onSubmit={onSubmit}
     >
       <Form.Row>

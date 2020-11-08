@@ -3,6 +3,7 @@ import cn from "classnames";
 
 import Form from "../form/form";
 import QuestionnaireStepNavigationGroup from "./navigation-group";
+import QuestionnairePrompt from "../questionnaire-prompt/questionnaire-prompt";
 
 import { useStepNavigation } from "../../hooks";
 import "./questionnaire-step.css";
@@ -12,6 +13,7 @@ const QuestionnaireStep = ({
   children,
   isWide,
   isNextDisabled,
+  hasUnsavedData,
   onSubmit,
 }) => {
   const [{ currentStepSlugIndex }] = useStepNavigation();
@@ -22,6 +24,8 @@ const QuestionnaireStep = ({
         "QuestionnaireStep--wide": isWide,
       })}
     >
+      <QuestionnairePrompt hasUnsavedData={hasUnsavedData} />
+
       <h2 className="QuestionnaireStep-title">
         {currentStepSlugIndex + 1}. {step.title}
       </h2>

@@ -48,6 +48,7 @@ const usePersonalData = () => {
       values,
       fullNameError: getFormikError("fullName", errors, touched),
       emailError: getFormikError("email", errors, touched),
+      hasUnsavedData: values.fullName !== fullName || values.email !== email,
     },
     { onChange: _handleChange, onSubmit: handleSubmit },
   ];

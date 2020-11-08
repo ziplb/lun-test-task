@@ -28,7 +28,7 @@ const useStepNavigation = () => {
     const nextStepLink = getQuestionnaireStepLink(
       stepSlugInOrderList[currentStepSlugIndex + 1]
     );
-    push(nextStepLink);
+    push(nextStepLink, { isDirect: true });
   };
 
   const checkIsStepFinished = useCallback(
@@ -41,6 +41,7 @@ const useStepNavigation = () => {
       prevStepSlug,
       isCurrentStepLast,
       isCurrentStepFirst,
+      currentStepSlug,
       currentStepSlugIndex,
     },
     { goToNextStep, checkIsFirstStep, checkIsStepFinished },

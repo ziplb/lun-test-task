@@ -55,6 +55,9 @@ const useLocationData = () => {
     values.country && normalizeCountry(values.country);
   const selectedCityOption = values.city && normalizeCity(values.city);
 
+  const hasUnsavedData =
+    values.country?.slug !== country?.slug || values.city?.slug !== city?.slug;
+
   const setCountry = (country) => setFieldValue("country", country);
   const setCountryQuery = (countryQuery) =>
     setFieldValue("countryQuery", countryQuery);
@@ -113,6 +116,7 @@ const useLocationData = () => {
       selectedCityOption,
       countryError: getFormikError("country", errors, touched),
       cityError: getFormikError("city", errors, touched),
+      hasUnsavedData,
     },
     {
       onSubmit: handleSubmit,

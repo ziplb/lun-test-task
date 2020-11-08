@@ -58,7 +58,11 @@ const useFavoriteAnimalData = () => {
   };
 
   return [
-    { values, error: getFormikError("favoriteAnimal", errors, touched) },
+    {
+      values,
+      error: getFormikError("favoriteAnimal", errors, touched),
+      hasUnsavedData: values?.favoriteAnimal?.slug !== favoriteAnimal?.slug,
+    },
     {
       onSubmit: handleSubmit,
       onChange: _handleChange,

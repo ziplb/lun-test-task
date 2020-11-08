@@ -46,13 +46,21 @@ const useSocialsData = () => {
     },
   });
 
+  const hasUnsavedData = socialList.reduce(
+    (accumulator, { slug, value }) => accumulator || value !== values[slug],
+    false
+  );
+
   const _handleChange = (e) => {
     handleChange(e);
     setTouched({ ...touched, [e.target.name]: false });
   };
 
+  // console.log("socialList: ", socialList);
+  // console.log("values: ", values);
+
   return [
-    { values },
+    { values, hasUnsavedData },
     {
       onChange: _handleChange,
       onSubmit: handleSubmit,

@@ -9,7 +9,7 @@ import useSocialsData from "./use-socials-data";
 
 const SocialsQuestionnaireStep = () => {
   const [
-    { values },
+    { values, hasUnsavedData },
     { onChange, onSubmit, onFieldValueSet, getError },
   ] = useSocialsData();
 
@@ -21,6 +21,7 @@ const SocialsQuestionnaireStep = () => {
     <QuesitonnaireStep
       step={socialsStep}
       isNextDisabled={isNextDisabled}
+      hasUnsavedData={hasUnsavedData}
       onSubmit={onSubmit}
     >
       {socialList.map(({ slug, title }, index) => (

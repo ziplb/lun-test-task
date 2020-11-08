@@ -10,7 +10,7 @@ import usePersonalData from "./use-personal-data";
 
 const PersonalQuestionnaireStep = () => {
   const [
-    { values, fullNameError, emailError },
+    { values, fullNameError, emailError, hasUnsavedData },
     { onChange, onSubmit },
   ] = usePersonalData();
 
@@ -18,6 +18,7 @@ const PersonalQuestionnaireStep = () => {
     <QuestionnaireStep
       step={personalStep}
       isNextDisabled={fullNameError || emailError}
+      hasUnsavedData={hasUnsavedData}
       onSubmit={onSubmit}
     >
       <Form.Row>
