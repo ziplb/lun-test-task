@@ -39,3 +39,14 @@
 .FavoriteAnimalQuesitonnaireStep-error {
   color: #ff0000;
 }
+
+@media (max-width: 1100px) {
+  .FavoriteAnimalQuesitonnaireStep-error {
+    left: 0;
+    right: auto;
+    top: calc(100% + 2px);
+    transform: none;
+    max-width: auto;
+    font-size: 12px;
+  }
+}
