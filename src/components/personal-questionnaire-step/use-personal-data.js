@@ -9,11 +9,11 @@ const validationSchema = object().shape({
   fullName: string()
     .min(3, "Имя слишком короткое")
     .max(30, "Имя слишком длинное")
-    .required("Имя является обязательным полем"),
+    .required("Введите ваше имя"),
 
   email: string()
     .email("Вы ввели некорректный e-mail")
-    .required("E-mail является обязательным полем"),
+    .required("Введите ваш e-mail"),
 });
 
 const usePersonalData = () => {

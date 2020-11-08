@@ -17,7 +17,7 @@ addYupMethod(object, "isCat", function (message) {
 const validationSchema = object().shape({
   favoriteAnimal: object()
     .nullable(true)
-    .required("Выберите своего любимого котика")
+    .required("Вы забыли выбрать котика")
     .isCat("Вы выбрали собачку, а нужно котика"),
 });
 
