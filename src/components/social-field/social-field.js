@@ -40,7 +40,7 @@ const SocialField = ({
     onFieldValueSet(name, checked ? "" : null);
   };
 
-  const isMobile = useMedia("(max-width: 640px)");
+  const isMobile = useMedia("(max-width: 840px)");
 
   return (
     <div className="SocialField">
@@ -65,7 +65,7 @@ const SocialField = ({
                 isError={error}
                 onChange={onChange}
                 isSmall={!isMobile}
-                isFocusOnMount
+                isFocusOnMount={!isMobile}
               />
             </div>
           )}
